@@ -5,5 +5,11 @@ using UnityEngine;
 
 public class MyEvents : MonoBehaviour
 {
-    public static event EventHandler sium;
+    public static MyEvents instance;
+    public event EventHandler sium;
+
+    private void Start()
+    {
+        instance = this;
+    }
 }

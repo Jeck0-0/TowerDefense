@@ -193,7 +193,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  name: Basic
+  turretName: Basic
+  description: is basic idk
+  cost: 25
+  sellRefund: 15
 --- !u!114 &4774739776985662483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +215,7 @@ MonoBehaviour:
   rotationSpeed: 90
   range: 5
   attackSpeed: 1
+  resetRotationWhenNoTarget: 0
   target: {fileID: 0}
   bulletSpawnAt: {fileID: 8158018480700766715}
   barrelPivot: {fileID: 4774739776931341415}

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f,
     type: 3}
   m_Color: {r: 0.8207547, g: 0.6276624, b: 0.24390352, a: 1}
@@ -102,12 +102,21 @@ MonoBehaviour:
   shotBy: {fileID: 0}
   target: {fileID: 0}
   canFindNewTarget: 1
-  speed: 3
-  turnSpeed: 180
+  speed: 4
+  turnSpeed: 90
   damage: 5
-  explosionRange: 0
+  explosionRange: 0.2
   explosionDamagePerc: 0
   explosionDamageFixed: 0
+  dist: 0
+  curveHardness: 0
+  moveAround: 0
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!58 &8967186309976801304
 CircleCollider2D:
   m_ObjectHideFlags: 0

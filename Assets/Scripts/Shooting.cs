@@ -13,12 +13,14 @@ public class Shooting : MonoBehaviour
     public float rotationSpeed;
     public float range;
     public float attackSpeed;
+    public bool resetRotationWhenNoTarget;
 
     [Header("Others")]
     public Transform target;
     public Transform bulletSpawnAt;
     public Transform barrelPivot;
     public float degShootingAngleThreshold = 5;
+    public event EventHandler<Projectile> ShotProjectile;
 
     float currentAngle {
         get {
@@ -58,6 +60,8 @@ public class Shooting : MonoBehaviour
         }
         else if (UpdateTarget())
             RotateTowardsTarget();
+        else if (resetRotationWhenNoTarget)
+            RotateTowardsAngle(transform.rotation);
         
     } 
 
@@ -66,6 +70,10 @@ public class Shooting : MonoBehaviour
         Vector3 vectorToTarget = target.position - transform.position;
         float angle = FixDegreeAngle(Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90);
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        RotateTowardsAngle(q);
+    }
+    void RotateTowardsAngle(Quaternion q)
+    {
         //transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
         barrelPivot.rotation = Quaternion.RotateTowards(barrelPivot.rotation, q, rotationSpeed * Time.deltaTime);
     }
@@ -84,6 +92,7 @@ public class Shooting : MonoBehaviour
     private void OnSelect()
     {
         selected = true;
+        //MyEvents.sium.Invoke();
     }
     void OnDeselect()
     {
@@ -111,6 +120,7 @@ public class Shooting : MonoBehaviour
                 GameObject go = Instantiate(projectile, bulletSpawnAt.position, Quaternion.Euler(0, 0, currentAngle + 180)); //////////////////////////////
                 Projectile proj = go.GetComponent<Projectile>();
                 proj.target = target;
+                ShotProjectile?.Invoke(this, proj);
             }
         }
     }

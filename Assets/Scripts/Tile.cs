@@ -6,11 +6,16 @@ using UnityEngine;
 public abstract class Tile : MonoBehaviour
 {
     static public Tile SelectedTile;
-    public bool selected => SelectedTile == this;
+    public bool isSelected => SelectedTile == this;
     public Vector2 pos;
     public GridMap map;
-    public bool canBuildOver;
+    public bool canBuildOver => CanBuildOver();
     public bool enemiesCanWalkOver; //{ get set } change layer thing 
+
+    protected virtual bool CanBuildOver()
+    {
+        return false;
+    }
 
     public void Remove()
     {
@@ -29,7 +34,7 @@ public abstract class Tile : MonoBehaviour
     }
     public void Deselect()
     {
-        if (selected)
+        if (isSelected)
             SelectedTile = null;
         BroadcastMessage("OnDeselect");
     }

@@ -1,11 +1,12 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    public static int
-        Money;
+    static GameStats instance;
+    public static event EventHandler OnMoneyChanged;
     public int startMoney = 150;
 
     public static int Lives;
@@ -13,9 +14,24 @@ public class GameStats : MonoBehaviour
 
     public static int Rounds;
 
+    static float coins;
+    public static float Coins 
+    { 
+        get { return coins; } 
+        set { coins = value; 
+              OnMoneyChanged?.Invoke(null,null); } 
+    }
+
     private void Start()
     {
-        Money = startMoney;
+        if (instance)
+        {
+            Destroy(this);
+            return;
+        }
+        instance = this;
+
+        Coins = startMoney;
         Lives = startLives;
         Rounds = 0;
     }

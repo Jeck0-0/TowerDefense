@@ -23,19 +23,20 @@ public class Health : MonoBehaviour
             Heal(amount);
     }
 
-    public bool Damage(float amount) // returns true if killed
+    public DamageArgs Damage(float amount) // returns true if killed
     {
         if (amount <= 0)
-            return false;
+            return null;
 
+        float healthBefore = currentHealth;
         currentHealth -= amount;
         OnDamaged?.Invoke(this, null);
         if (currentHealth <= 0)
         {
             OnDied?.Invoke(this, null);
-            return true;
+            return new DamageArgs(healthBefore, true);
         }
-        return false;
+        return new DamageArgs(amount, false);
     }
 
     public bool Heal(float amount) // returns true if health is full
@@ -48,5 +49,16 @@ public class Health : MonoBehaviour
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
         return currentHealth == maxHealth;
+    }
+
+    public class DamageArgs
+    {
+        public float damageDealt;
+        public bool killed;
+        public DamageArgs(float _damageDealt, bool _killed = false)
+        {
+            damageDealt = _damageDealt;
+            killed = _killed;
+        }
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GridMap : MonoBehaviour
 {
-    public Dictionary<Vector2, GridElement> grid;
+    public Dictionary<Vector2, Tile> grid;
 
-    public GridElement GetElementAt(Vector2 coords)
+    public Tile GetElementAt(Vector2 coords)
     {
         if (grid.ContainsKey(coords))
             return grid[coords];
@@ -25,7 +25,7 @@ public class GridMap : MonoBehaviour
         if (grid.ContainsKey(coords))
             return false;
         GameObject go = Instantiate(obj, coords, Quaternion.identity, transform);
-        GridElement ge = go.AddComponent<GridElement>();
+        Tile ge = go.AddComponent<Tile>();
         grid.Add(coords, ge);
         return true;
     }

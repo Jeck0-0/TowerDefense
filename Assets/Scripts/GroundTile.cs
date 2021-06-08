@@ -6,13 +6,18 @@ public class GroundTile : Tile
 {
     [SerializeField] GameObject content;
     [SerializeField] GameObject selectEffect;
+    
+    
+    protected override bool CanBuildOver()
+    {
+        return content == null;
+    }
 
     private void Start()
     {
         transform.position = pos;
-
         enemiesCanWalkOver = false;
-        canBuildOver = content == null;
+        
     }
 
     private void OnMouseEnter()
@@ -22,7 +27,7 @@ public class GroundTile : Tile
 
     private void OnMouseDown()
     {
-        if (selected)
+        if (isSelected)
             Deselect();
         else
             Select();
@@ -35,16 +40,39 @@ public class GroundTile : Tile
     public void OnDeselect()
     {
         selectEffect.SetActive(false);
+        if (!SelectedTile)
+            UISideMenu.Instance.Hide();
     }
     public void OnSelect()
     {
         selectEffect.SetActive(true);
+        if (canBuildOver)
+            UISideMenu.Instance.ShowShop();
+        else if (content && content.TryGetComponent(out Turret t))
+            UISideMenu.Instance.ShowTurretInfo(t);
     }
 
     public void BuildTower(GameObject go)
     {
-        canBuildOver = false;
-        Instantiate(go, transform);
+        content = Instantiate(go, transform);
+        if (content && content.TryGetComponent(out Turret t))
+            UISideMenu.Instance.ShowTurretInfo(t);
+
+        if (content.TryGetComponent(out OnDestroyDispatcher onDestroyScript))
+            onDestroyScript.OnObjectDestroyed += OnContentDestroyed;
+        else
+            content.AddComponent<OnDestroyDispatcher>().OnObjectDestroyed += OnContentDestroyed;
+    }
+
+    void OnContentDestroyed(GameObject destroyedThingy)
+    {
+        if(isSelected)
+            UISideMenu.Instance.ShowShop();
+    }
+
+    void UpdateSideMenu()
+    {
+        //// should handle this on side menu script actually
     }
 
 }
