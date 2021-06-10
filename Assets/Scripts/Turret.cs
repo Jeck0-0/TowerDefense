@@ -8,8 +8,10 @@ public class Turret : MonoBehaviour
     public float power;
     public string turretName;
     public string description;
-    public int cost;
+    public int price;
     public int sellRefund;
+    public int upgradeLevel;
+    public float upgradePrice;
     int timesShot;
     int enemiesKilled;
     float damageDealt;
@@ -48,7 +50,3 @@ public class Turret : MonoBehaviour
 
 
 }
-
-// single static event with all enemy death informations handled by single script
-// many scripts siumming
-// idk

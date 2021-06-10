@@ -4,295 +4,96 @@ using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Project.Scripts
+public class Pathfinder
 {
-    public class Pathfinder : MonoBehaviour
-    {/*
-        public enum GraphSearchMode
+    public static List<Tile> FindPath(GridMap grid, Tile startTile, Tile endTile)
+    {
+        Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
+        List<Tile> openSet = new List<Tile>();
+        HashSet<Tile> closedSet = new HashSet<Tile>();
+        List<Vector2> closedPositions = new List<Vector2>();
+
+        openSet.Add(startTile);
+        tileData.Add(startTile, new PathfinderTile(startTile, 0, GetDistance(startTile, endTile)));
+
+        while (openSet.Count > 0)
         {
-            BreadthFirstSearch = 0,
-            Dijkstra = 1,
-            GreedyBestFirst = 2,
-            AStar = 3
-        }
-        [SerializeField] private GraphSearchMode mode = GraphSearchMode.BreadthFirstSearch;
+            PathfinderTile currentTile = tileData[openSet[0]];
+            for (int i = 1; i < openSet.Count; i++)
+                if (tileData[openSet[i]].fCost < currentTile.fCost || (
+                    tileData[openSet[i]].fCost == currentTile.fCost && tileData[openSet[i]].hCost < currentTile.hCost))
+                    currentTile = tileData[openSet[i]];
 
-        [SerializeField] private Color startColor = Color.green;
+            openSet.Remove(currentTile.originalTile);
+            closedSet.Add(currentTile.originalTile);
 
-        [SerializeField] private Color goalColor = Color.red;
+            if (currentTile.originalTile == endTile)
+                return RetracePath(tileData[startTile], tileData[endTile]);
 
-        [SerializeField] private Color frontierColor = Color.magenta;
 
-        [SerializeField] private Color exploredColor = Color.gray;
-
-        [SerializeField] private Color pathColor = Color.cyan;
-
-        [SerializeField] private Color arrowColor = new Color(0.85f, 0.85f, 0.85f, 1f);
-
-        [SerializeField] private Color highlightColor = new Color(1f, 1f, 0.5f, 1f);
-
-        [SerializeField] private bool showIterations = true;
-
-        [SerializeField] private bool showColors = true;
-
-        [SerializeField] private bool showArrows = true;
-
-        [SerializeField] private bool exitOnGoal = true;
-
-        [SerializeField, Range(0f, 1f)]
-        private float lerpColorAmount = 0.75f;
-
-        private Tile _startNode;
-        private Tile _goalNode;
-
-        private Graph _graph;
-        private GraphView _graphView;
-
-        private PriorityQueue<Node> _frontierNodes;
-        private List<Node> _exploredNodes;
-        private List<Node> _pathNodes;
-
-        private int _iterations;
-
-        public bool IsComplete { get; private set; }
-
-        [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalse")]
-        public void Initialize([NotNull] Graph graph, [NotNull] GraphView graphView, [NotNull] Tile start,
-            [NotNull] Tile goal)
-        {
-            if (graph == null || graphView == null || start == null || goal == null)
+            foreach (Tile neighbour in grid.GetNeighbours(currentTile.originalTile))
             {
-                Debug.LogWarning("Invalid data passed to initialize.");
-                return;
-            }
+                if (!neighbour.enemiesCanWalkOver || closedSet.Contains(neighbour))
+                    continue;
+                int newMovementCostToNeighbour = currentTile.gCost + GetDistance(currentTile.originalTile, neighbour);
 
-            if (start.Type == NodeType.Blocked || goal.Type == NodeType.Blocked)
-            {
-                Debug.LogWarning("Invalid start or end nodes selected.");
-                return;
-            }
-
-            _graph = graph;
-            _graphView = graphView;
-            _startNode = start;
-            _goalNode = goal;
-
-            ShowColors();
-
-            _frontierNodes = new PriorityQueue<Node>();
-            _frontierNodes.Enqueue(start);
-
-            _exploredNodes = new List<Node>();
-            _pathNodes = new List<Node>();
-
-            for (var x = 0; x < graph.Width; ++x)
-            {
-                for (var y = 0; y < graph.Height; ++y)
+                if (!tileData.ContainsKey(neighbour))
                 {
-                    var node = graph.Nodes[x, y];
-                    node?.Reset();
-                }
-            }
-
-            IsComplete = false;
-            _iterations = 0;
-            _startNode.DistanceTraveled = 0;
-        }
-
-        public IEnumerator Search(float timeStep = 0.1f)
-        {
-            var timeStart = Time.realtimeSinceStartup;
-
-            yield return null;
-            while (_frontierNodes.Count > 0)
-            {
-                var node = _frontierNodes.Dequeue();
-                ++_iterations;
-
-                if (!_exploredNodes.Contains(node))
-                {
-                    _exploredNodes.Add(node);
+                    tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, GetDistance(neighbour, endTile), currentTile));
+                    openSet.Add(neighbour);
                 }
 
-                switch (mode)
-                {
-                    case GraphSearchMode.BreadthFirstSearch:
-                        ExpandFrontierBreadthFirst(node);
-                        break;
-                    case GraphSearchMode.Dijkstra:
-                        ExpandFrontierDijkstra(node);
-                        break;
-                    case GraphSearchMode.GreedyBestFirst:
-                        ExpandFrontierGreedyBestFirst(node);
-                        break;
-                    case GraphSearchMode.AStar:
-                        ExpandFrontierAStar(node);
-                        break;
+                if (newMovementCostToNeighbour < tileData[neighbour].gCost)
+                { 
+                    tileData[neighbour].gCost= newMovementCostToNeighbour;
+                    tileData[neighbour].parent = currentTile;
                 }
-
-                var foundGoal = _frontierNodes.Contains(_goalNode);
-                if (foundGoal)
-                {
-                    _pathNodes = GetPathNodes(_goalNode);
-                }
-
-                if (showIterations)
-                {
-                    ShowDiagnostics();
-                    yield return new WaitForSeconds(timeStep);
-                }
-
-                if (foundGoal && exitOnGoal) break;
-            }
-
-            IsComplete = true;
-            Debug.Log($"Elapsed time: {Time.realtimeSinceStartup - timeStart} seconds. Distance traveled: {_goalNode.DistanceTraveled} units.");
-
-            ShowDiagnostics();
+            } 
         }
 
-        private void ShowDiagnostics()
+        List<Tile> noPath = new List<Tile>();
+        noPath.Add(startTile);
+        return noPath;
+    }
+
+    static List<Tile> RetracePath(PathfinderTile startTile, PathfinderTile endTile)
+    {
+        List<Tile> path = new List<Tile>();
+        PathfinderTile currentTile = endTile;
+
+        while (currentTile != startTile)
         {
-            if (showColors) ShowColors();
-            if (showArrows) ShowNodeArrows();
+            path.Add(currentTile.originalTile);
+            currentTile = currentTile.parent;
+        }
+        //path.Add(startTile.originalTile);
+        path.Reverse();
+        return path;
+    }
+
+    public static int GetDistance(Tile t1, Tile t2)
+    {
+        return Mathf.RoundToInt(Mathf.Abs(t1.pos.x - t2.pos.x) + Mathf.Abs(t1.pos.y-t2.pos.y));
+    }
+
+    class PathfinderTile
+    {
+        public bool walkable;
+        public int gCost;
+        public int hCost;
+        public int fCost { get { return gCost + hCost; } }
+        public Tile originalTile;
+        public PathfinderTile parent;
+
+
+        public PathfinderTile(Tile _tile, int _gCost, int _hCost, PathfinderTile _parent = null)
+        {
+            originalTile = _tile;
+            walkable = _tile.enemiesCanWalkOver;
+            gCost = _gCost;
+            hCost = _gCost;
+            parent = _parent;
         }
 
-        private void ShowNodeArrows()
-        {
-            if (_graphView == null) return;
-            if (_frontierNodes != null) _graphView.ShowNodeArrows(_frontierNodes, arrowColor);
-            if (_pathNodes != null) _graphView.ShowNodeArrows(_pathNodes, highlightColor);
-        }
-
-        private void ExpandFrontierBreadthFirst([NotNull] Node node)
-        {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (node == null) return;
-            foreach (var neighbor in node.Neighbors)
-            {
-                if (_exploredNodes.Contains(neighbor)) continue;
-                if (_frontierNodes.Contains(neighbor)) continue;
-
-                // We don't need the distance traveled for the search itself,
-                // but it does help us in judging the quality of the trajectory.
-                var distanceToNeighbor = _graph.GetNodeDistance(node, neighbor);
-                var terrainCost = (int)node.Type;
-                var newDistanceTraveled = node.DistanceTraveled + distanceToNeighbor + terrainCost;
-                neighbor.DistanceTraveled = newDistanceTraveled;
-
-                // Since we added a priority queue instead of a regular one,
-                // this broke the BFS algorithm. We can emulate regular queue behavior
-                // by adding a monotonically increasing priority for each item.
-                neighbor.Priority = _exploredNodes.Count;
-
-                neighbor.Previous = node;
-                _frontierNodes.Enqueue(neighbor);
-            }
-        }
-
-        private void ExpandFrontierDijkstra([NotNull] Tile node)
-        {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (node == null) return;
-            foreach (var neighbor in node.Neighbors)
-            {
-                if (_exploredNodes.Contains(neighbor)) continue;
-
-                var distanceToNeighbor = _graph.GetNodeDistance(node, neighbor);
-                var terrainCost = (int)node.Type;
-                var newDistanceTraveled = node.DistanceTraveled + distanceToNeighbor + terrainCost;
-
-                if (float.IsInfinity(neighbor.DistanceTraveled) || neighbor.DistanceTraveled > newDistanceTraveled)
-                {
-                    neighbor.DistanceTraveled = newDistanceTraveled;
-                    neighbor.Priority = newDistanceTraveled;
-                    neighbor.Previous = node;
-                }
-
-                if (!_frontierNodes.Contains(neighbor)) _frontierNodes.Enqueue(neighbor);
-            }
-        }
-
-        private void ExpandFrontierGreedyBestFirst([NotNull] Node node)
-        {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (node == null || _graph == null) return;
-            foreach (var neighbor in node.Neighbors)
-            {
-                if (_exploredNodes.Contains(neighbor)) continue;
-                if (_frontierNodes.Contains(neighbor)) continue;
-
-                // We don't need the distance traveled for the search itself,
-                // but it does help us in judging the quality of the trajectory.
-                var distanceToNeighbor = _graph.GetNodeDistance(node, neighbor);
-                var terrainCost = (int)node.Type;
-                var newDistanceTraveled = node.DistanceTraveled + distanceToNeighbor + terrainCost;
-                neighbor.DistanceTraveled = newDistanceTraveled;
-
-                // Since we added a priority queue instead of a regular one,
-                // this broke the BFS algorithm. We can emulate regular queue behavior
-                // by adding a monotonically increasing priority for each item.
-                neighbor.Priority = _graph.GetNodeDistance(neighbor, _goalNode);
-
-                neighbor.Previous = node;
-                _frontierNodes.Enqueue(neighbor);
-            }
-        }
-
-        private void ExpandFrontierAStar([NotNull] Node node)
-        {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (node == null) return;
-            foreach (var neighbor in node.Neighbors)
-            {
-                if (_exploredNodes.Contains(neighbor)) continue;
-
-                var distanceToNeighbor = _graph.GetNodeDistance(node, neighbor);
-                var terrainCost = (int)node.Type;
-                var newDistanceTraveled = node.DistanceTraveled + distanceToNeighbor + terrainCost;
-
-                if (float.IsInfinity(neighbor.DistanceTraveled) || neighbor.DistanceTraveled > newDistanceTraveled)
-                {
-                    var heuristicToGoal = _graph.GetNodeDistance(neighbor, _goalNode);
-                    neighbor.DistanceTraveled = newDistanceTraveled;
-                    neighbor.Priority = newDistanceTraveled + heuristicToGoal;
-                    neighbor.Previous = node;
-                }
-
-                if (!_frontierNodes.Contains(neighbor)) _frontierNodes.Enqueue(neighbor);
-            }
-        }
-
-        private void ShowColors() => ShowColors(_graphView, _startNode, _goalNode);
-
-        [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalse")]
-        private void ShowColors([NotNull] GraphView graphView, [NotNull] Node start, [NotNull] Node goal)
-        {
-            if (graphView == null || start == null || goal == null) return;
-
-            if (_frontierNodes != null) graphView.ColorNodes(_frontierNodes, frontierColor, lerpColorAmount);
-            if (_exploredNodes != null) graphView.ColorNodes(_exploredNodes, exploredColor, lerpColorAmount);
-            if (_pathNodes != null) graphView.ColorNodes(_pathNodes, pathColor, lerpColorAmount);
-
-            var startNodeView = graphView.GetView(start);
-            if (startNodeView != null) startNodeView.ColorNode(startColor);
-
-            var goalNodeView = graphView.GetView(goal);
-            if (goalNodeView != null) goalNodeView.ColorNode(goalColor);
-        }
-
-        [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalse")]
-        [NotNull]
-        private List<Node> GetPathNodes([NotNull] Node endNode)
-        {
-            var path = new List<Node>();
-            while (endNode != null)
-            {
-                path.Add(endNode);
-                endNode = endNode.Previous;
-            }
-            path.Reverse();
-            return path;
-        }*/
     }
 }
