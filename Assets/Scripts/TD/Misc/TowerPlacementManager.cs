@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using System;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace TowerDefense
     
         public void Update()
         {
-            if (placingTower == null)
+            if (!placingTower)
                 return;
     
             //prevent placing the tower in the same frame it's being selected
@@ -37,27 +38,40 @@ namespace TowerDefense
                 return;
             }
     
-            Tile hoveringTile = GridManager.Instance.GetHoveringTile();
-    
             //place tower
-            if (Input.GetMouseButtonDown(0) && hoveringTile && hoveringTile.CanPlace() && !Helpers.IsOverUI)
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
             {
-                PlaceSelectedTower(hoveringTile);
-                return;
+                var hit = Physics2D.RaycastAll(
+                    Helpers.Camera.ScreenToWorldPoint(Input.mousePosition), 
+                    Vector2.zero);
+                ITowerSlot slot = null;
+
+                foreach (var h in hit)
+                {
+                    slot = h.collider.GetComponent<ITowerSlot>();
+                    if (slot != null)
+                        break;
+                }
+                
+                if (slot != null && slot.CanPlace(placingTower) && !Helpers.IsOverUI)
+                {
+                    PlaceSelectedTower(slot);
+                    return;
+                }
             }
         }
     
     
-        void PlaceSelectedTower(Tile tile)
+        void PlaceSelectedTower(ITowerSlot tile)
         {
-            if (!tile || !placingTower) return;
+            if (tile == null || !placingTower) return;
     
             InputManager.Instance.SetPlacingStatus(false);
     
             Tower tower = null;
             if (instantiateNew)
             {
-                tower = Instantiate(placingTower.gameObject).GetComponent<Tower>();
+                tower = TowerFactory.Instance.SpawnTower(placingTower.towerID);
             }
             else
             {
@@ -108,13 +122,13 @@ namespace TowerDefense
             this.onCancelPlacing = cancelPlacing;
             startedPlacingThisFrame = true;
     
-            TowerPreviewManager.Instance.PreviewTower(tower, true);
+            TowerPreviewManager.Instance.PreviewTower(tower, false);
     
             //Hide tower
             if (!instantiateNew) 
-            { 
+            {
                 tower.transform.position = Vector3.left * 10000;
-                tower.Tile.RemoveTower();
+                tower.Slot?.RemoveTower();
             }
     
             AudioController.Instance.PlaySound2D("ui_confirm");

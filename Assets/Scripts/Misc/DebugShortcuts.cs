@@ -31,6 +31,11 @@ namespace TowerDefense
     
             if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift))
             {
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    TowerFactory.Instance.SpawnTower("basic");
+                }
+                
                 //lower volume and save
                 if (Input.GetKeyDown(KeyCode.Comma))
                 {

@@ -40,7 +40,7 @@ namespace TowerDefense
         {
             if (freezeSound)
                 Destroy(freezeSound.gameObject); 
-            freezeSound = AudioController.Instance.PlaySound2D("tower_" + towerName + "_loop", attackSoundVolume, looping: true);
+            freezeSound = AudioController.Instance.PlaySound2D("tower_" + towerID + "_loop", attackSoundVolume, looping: true);
     
         }
     

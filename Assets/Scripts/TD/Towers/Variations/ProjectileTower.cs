@@ -34,7 +34,7 @@ namespace TowerDefense
         protected override void Attack()
         {
             GameObject go = Instantiate(projectilePrefab, bulletSpawnpoint.position, bulletSpawnpoint.rotation);
-            string hitSFX = $"tower_{towerName}_hit";
+            string hitSFX = $"tower_{towerID}_hit";
             go.GetComponent<Projectile>().Initialize(Damage, ProjectileSpeed, ProjectileLifetime, SplashDamageArea, target, destroyProjectileOnTargetDeath, hitSFX, projectileHitSoundVolume);
         }
     }

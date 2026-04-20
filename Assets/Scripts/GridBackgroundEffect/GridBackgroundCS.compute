@@ -1,0 +1,50 @@
+// entry point from the C# script
+#pragma kernel CSMain
+
+// This MUST match the layout of the SquareData struct in both your C# script and your standard Shader.
+struct SquareData
+{
+    float3 center;
+    float3 currentPosition;
+    float scale;
+    float4 color;
+};
+
+// buffer in the GPU memory. Can be read by the shader for rendering.
+RWStructuredBuffer<SquareData> squaresBuffer;
+
+// same for all squares
+float4 baseColor;
+float3 mousePosition;
+float deltaTime;
+StructuredBuffer<float> offsetByDistance;
+StructuredBuffer<float> sizeByDistance;
+StructuredBuffer<float> opacityByDistance;
+StructuredBuffer<int> exclude;
+int curvePrecision;
+float maxDistance;
+
+
+
+[numthreads(64, 1, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    // Get the total length of the buffer.
+    uint count, stride;
+    squaresBuffer.GetDimensions(count, stride);
+    
+    if (id.x >= count) return;
+    SquareData square = squaresBuffer[id.x];
+    
+    float dist = distance(mousePosition.xy, square.center.xy);
+    float2 dir = normalize(mousePosition.xy - square.center.xy);
+    
+    int distIndex = clamp((int)(dist * (curvePrecision / maxDistance)), 0, curvePrecision - 1);
+    float offset = offsetByDistance[distIndex];
+    
+    square.currentPosition = square.center + float3(dir * offset, 0);
+    square.scale = sizeByDistance[distIndex] * -(exclude[id.x] - 1);
+    square.color.a = opacityByDistance[distIndex];
+    
+    squaresBuffer[id.x] = square;
+}

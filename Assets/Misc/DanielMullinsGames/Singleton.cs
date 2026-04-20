@@ -9,7 +9,7 @@ namespace TowerDefense
         private static object m_Lock = new object();
         private static T m_Instance;
     
-        protected bool isInstanced => m_Instance;
+        protected bool IsInstanced => m_Instance;
     
         public static T Instance
         {
@@ -31,7 +31,7 @@ namespace TowerDefense
     
         protected static void FindInstance()
         {
-            if (m_Instance == null)
+            if (!m_Instance)
             {
                 m_Instance = (T)FindAnyObjectByType(typeof(T));
             }

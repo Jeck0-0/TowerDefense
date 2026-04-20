@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd8c4725c6c4577be0a3512071367b1, type: 3}
+  m_Name: GlobalCritDmg (Not Functional yet)
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: upgrades
+      Entry: 7
+      Data: 0|TowerDefense.TowerUpgrade[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 10
+    - Name: targetTower
+      Entry: 1
+      Data: basic
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: damage
+    - Name: modifier
+      Entry: 7
+      Data: 4|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 15
+    - Name: targetTower
+      Entry: 1
+      Data: 
+    - Name: description
+      Entry: 1
+      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
+    - Name: upgrade
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 7|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: damage
+    - Name: modifier
+      Entry: 7
+      Data: 8|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 30
+    - Name: targetTower
+      Entry: 6
+      Data: 
+    - Name: description
+      Entry: 1
+      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
+    - Name: upgrade
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: damage
+    - Name: modifier
+      Entry: 7
+      Data: 12|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  defaultTargetTower: basic
+  defaultTargetStat: critical damage
+  defaultDescription: 'Basic Tower: +10% crit damage or
+
+    Current Speed + 0.5%
+    = New crit damage
+
+    Caps when crit damage reaches 100%'

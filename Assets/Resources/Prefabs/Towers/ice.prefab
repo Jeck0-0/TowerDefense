@@ -58,11 +58,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6016853742787298346}
+  - component: {fileID: 8945152884576176666}
   - component: {fileID: 5123767325873399359}
   - component: {fileID: -1293504078115593503}
   - component: {fileID: 3635735975561972143}
+  - component: {fileID: 8090656587053428859}
   m_Layer: 0
-  m_Name: IceTower
+  m_Name: ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,6 +87,18 @@ Transform:
   - {fileID: 1840399289050802807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8945152884576176666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367323786301763600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5123767325873399359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,14 +112,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 3
   effects: {fileID: 0}
+  towerID: ice
   shopIcon: {fileID: -2825653136060754799, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Ice
+  towerName: XNOR
   towerDescription: Slows enemies in an area. Does not stack.
   towerColor: {r: 0.3803922, g: 0.7294118, b: 0.7607844, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 100
+    m_baseValue: 64
     min: 1
     max: 0
     tempMin: 0
@@ -137,17 +153,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: maxRange
         modifier:
-          name: 
           add: 0.3
           multiply: 1
       - stat: slowAmount
         modifier:
-          name: 
           add: -0.1
           multiply: 1
       - stat: damage
         modifier:
-          name: 
           add: 2
           multiply: 1
       flagUpgrades: []
@@ -155,17 +168,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: maxRange
         modifier:
-          name: 
           add: 0.5
           multiply: 1
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: slowAmount
         modifier:
-          name: 
           add: -0.1
           multiply: 1
       flagUpgrades: []
@@ -294,6 +304,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8090656587053428859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367323786301763600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e681042c224cdca3ef9f5fbd7c2682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!1 &4069511386675674234
 GameObject:
   m_ObjectHideFlags: 0

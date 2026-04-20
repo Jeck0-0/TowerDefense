@@ -43,11 +43,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1740342164309263906}
+  - component: {fileID: 8280062612187138738}
   - component: {fileID: 6193861130497882043}
   - component: {fileID: -3436987236222513301}
   - component: {fileID: -5746598715956335208}
+  - component: {fileID: 4669379796999818579}
   m_Layer: 0
-  m_Name: StunTower
+  m_Name: stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,6 +71,18 @@ Transform:
   - {fileID: 6985303071227194024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8280062612187138738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752127049823460849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6193861130497882043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,15 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 2
   effects: {fileID: 0}
+  towerID: stun
   shopIcon: {fileID: -6240021825540437177, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Stun
-  towerDescription: Damages nearby enemies, and has a chance to stun them for a short
-    time.
+  towerName: XOR
+  towerDescription: Has a chance to stun enemies.
   towerColor: {r: 0.7372549, g: 0.7058824, b: 0.7568628, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 75
+    m_baseValue: 32
     min: 1
     max: 0
     tempMin: 0
@@ -122,12 +137,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 2
           multiply: 1
       - stat: stunChance
         modifier:
-          name: 
           add: 0.05
           multiply: 1
       flagUpgrades: []
@@ -135,12 +148,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: maxRange
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       - stat: damage
         modifier:
-          name: 
           add: 2
           multiply: 1
       flagUpgrades: []
@@ -148,17 +159,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: stunChance
         modifier:
-          name: 
           add: 0.05
           multiply: 1
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: attackSpeed
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       flagUpgrades: []
@@ -289,6 +297,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4669379796999818579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752127049823460849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849791fb417d4fca99ed24b99ab7c11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!1 &2291845964236734813
 GameObject:
   m_ObjectHideFlags: 0

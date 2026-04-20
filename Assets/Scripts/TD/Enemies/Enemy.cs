@@ -79,7 +79,7 @@ namespace TowerDefense
 
             void Die()
             {
-                GameStats.Instance.ModifyCoins((int)MoneyReward);
+                //GameStats.Instance.ModifyCoins((int)MoneyReward);
     
                 var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Small);
                 var repetition = new AudioParams.Repetition(.05f);

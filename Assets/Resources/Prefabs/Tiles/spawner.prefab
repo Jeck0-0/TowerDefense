@@ -475,5 +475,5 @@ MonoBehaviour:
       delay: 0.5
     amount: 1
   isSpawning: 0
-  multiplyHpPerWave: 1.25
+  multiplyHpPerWave: 2
   multiplyHpBase: 1

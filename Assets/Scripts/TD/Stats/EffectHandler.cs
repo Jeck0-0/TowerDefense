@@ -10,15 +10,11 @@ namespace TowerDefense
     public class EffectHandler : MonoBehaviour
     {
         [ShowInInspector, ReadOnly]
-        public Dictionary<string, ActiveEffect> effects;
+        public Dictionary<string, ActiveEffect> effects = new();
 
         public Action<Effect> OnEffectAdded;
         public Action<Effect> OnEffectRemoved;
     
-        private void Awake()
-        {
-            effects = new();
-        }
     
         public void AddEffect(Effect effect, float duration, bool forceUpdateDuration = false)
         {

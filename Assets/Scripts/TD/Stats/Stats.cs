@@ -33,6 +33,8 @@ namespace TowerDefense
     
             AddStat(name, new Stat(name, baseValue, minValue, maxValue));
         }
+        
+        public bool HasStat(string name) => stats.ContainsKey(name);
     
         public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
             => stats[statName].AddModifier(modifierName, add, multiply, overrideIfDuplicate);
@@ -163,15 +165,24 @@ namespace TowerDefense
     
         public void AddModifier(string id, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
         {
+            //override existing
             if (modifiers.ContainsKey(id) && overrideIfDuplicate)
             {
                 modifiers[id].multiply = multiply;
                 modifiers[id].add = add;
             }
+            //create new (regardless of override)
+            else if(!modifiers.ContainsKey(id))
+            {
+                modifiers[id] = new StatModifier(add, multiply);
+            }
+            //no override (sum)
             else
             {
-                modifiers[id] = new StatModifier(id, add, multiply);
+                modifiers[id].add += add;
+                modifiers[id].multiply += multiply - 1;
             }
+            
             UpdateValue();
         }
     
@@ -222,13 +233,11 @@ namespace TowerDefense
         [Serializable]
         public class StatModifier
         {
-            public string name;
             public float add;
             public float multiply = 1;
             public StatModifier() { }
-            public StatModifier(string name, float add, float multiply)
+            public StatModifier(float add, float multiply)
             {
-                this.name = name;
                 this.add = add;
                 this.multiply = multiply;
             }

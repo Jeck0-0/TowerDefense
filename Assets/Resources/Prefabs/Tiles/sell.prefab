@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &300217848133731119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 180457931428360483, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.36785302
+      objectReference: {fileID: 0}
+    - target: {fileID: 180457931428360483, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3025988
+      objectReference: {fileID: 0}
+    - target: {fileID: 180457931428360483, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.36785302
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3025988
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156686804129636328, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.36785302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156686804129636328, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3025988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156686804129636328, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Name
+      value: sell Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159591352902367505, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.36785302
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159591352902367505, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3025988
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159591352902367505, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1232713051410839201}
+  m_SourcePrefab: {fileID: 100100000, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+--- !u!1 &6782617416300890670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+  m_PrefabInstance: {fileID: 300217848133731119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1232713051410839201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782617416300890670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afaf999a83c465498ea185187f50f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileId: sellTile
+  icon: {fileID: 0}
+  tileName: Sell Tile
+  description: Destroys anything placed on it
+  type: 2
+  isWalkable: 0
+  isHome: 0
+  canBuildOver: 1
+  position: {x: 0, y: 0}
+  tower: {fileID: 0}
+  gfx: {fileID: 0}

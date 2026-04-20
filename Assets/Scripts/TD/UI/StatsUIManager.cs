@@ -29,7 +29,7 @@ namespace TowerDefense
             if(GameManager.Instance.winGameAtWave == -1)
                 waves.text = (wave + 1).ToString();
             else
-                waves.text = (wave + 1).ToString() + "/" + GameManager.Instance.winGameAtWave;
+                waves.text = $"{wave + 1}<color=#847e87>/{GameManager.Instance.winGameAtWave}</color>";
         }
         protected void UpdateLives()
         {
@@ -37,7 +37,7 @@ namespace TowerDefense
         }
         protected void UpdateCoins()
         {
-            coins.text = GameStats.Instance.coins.ToString();
+            coins.text = $"{GameStats.Instance.coins}<color=#8a8941>+{GameStats.Instance.coinsPerTick}</color>";
         }
     }
     

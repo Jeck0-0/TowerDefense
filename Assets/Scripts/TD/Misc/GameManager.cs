@@ -18,6 +18,7 @@ namespace TowerDefense
     
         public static List<Enemy> Enemies => Instance.enemies;
         public List<Enemy> enemies = new();
+        public List<Tower> Towers { get; private set; } = new();
 
         protected static List<Enemy> newEnemies = new();
         public static void AddEnemy(Enemy enemy)
@@ -52,7 +53,32 @@ namespace TowerDefense
             if (currentWave + 1 == winGameAtWave)
                 WaveManager.Instance.PauseSpawning(false);
         }
-    
+
+        public void AddTower(Tower tower)
+        {
+            if (Towers.Contains(tower))
+            {
+                Debug.LogWarning("Tower already registered: " + tower);
+                return;
+            }
+            Towers.Add(tower);
+        }
+
+        public void RemoveTower(Tower tower)
+        {
+            if(!Towers.Contains(tower))
+                return;
+            Towers.Remove(tower);
+        }
+        
+        public void UnlockGlobalUpgrade(string towerId, IUpgrade upgrade)
+        {
+            foreach (var tower in Towers)
+                if(towerId == "*" || tower.towerID == towerId)
+                    tower.upgradeHandler.UnlockUpgrade("globalUpgrade", upgrade, false);
+            TowerFactory.Instance.UnlockUpgrade(towerId, upgrade);
+        }
+        
         protected void CheckVictory()
         {
             if (WaveManager.Instance.CurrentWave + 1 == winGameAtWave)

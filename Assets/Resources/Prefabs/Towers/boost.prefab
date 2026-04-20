@@ -9,11 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644609657256722233}
+  - component: {fileID: 8890450729995726969}
   - component: {fileID: 3885226249306306330}
   - component: {fileID: -3641711824607459403}
   - component: {fileID: -6962892962487336712}
+  - component: {fileID: -2446857931530141678}
   m_Layer: 0
-  m_Name: BoostTower
+  m_Name: boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +37,18 @@ Transform:
   - {fileID: 6536067858149588861}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8890450729995726969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470663301399518721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3885226249306306330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,15 +62,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 2
   effects: {fileID: 0}
+  towerID: boost
   shopIcon: {fileID: 6618166012049062949, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Boost
-  towerDescription: Boosts the range and attack speed of adjacent towers. Does not
-    stack.
+  towerName: NOT
+  towerDescription: Boosts adjacent towers. Does not stack.
   towerColor: {r: 0.40784314, g: 0.76862746, b: 0.38431373, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 100
+    m_baseValue: 16
     min: 1
     max: 0
     tempMin: 0
@@ -170,6 +185,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2446857931530141678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470663301399518721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59eabff1d9624b7b8a2cb7e45c0a8351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!1 &5039091630313269200
 GameObject:
   m_ObjectHideFlags: 0

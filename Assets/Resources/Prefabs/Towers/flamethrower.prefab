@@ -9,11 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2959914068408384694}
+  - component: {fileID: 9159621772910801453}
   - component: {fileID: 3399822753291046652}
   - component: {fileID: -5241396943819277720}
   - component: {fileID: 5255534212222839749}
+  - component: {fileID: 3362631896301680600}
   m_Layer: 0
-  m_Name: FireTower
+  m_Name: flamethrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,10 +34,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8711475530282827606}
   - {fileID: 7117296386387936784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9159621772910801453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965188775826439053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3399822753291046652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,14 +62,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 4
   effects: {fileID: 0}
+  towerID: flamethrower
   shopIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Flamethrower
-  towerDescription: Burns enemies over time. Burning enemies can't be frozen.
+  towerName: NAND
+  towerDescription: Burns enemies over time. Does not stack.
   towerColor: {r: 0.7607844, g: 0.6745098, b: 0.3803922, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 150
+    m_baseValue: 512
     min: 1
     max: 0
     tempMin: 0
@@ -88,12 +103,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: burnDuration
         modifier:
-          name: 
           add: 1
           multiply: 1
       flagUpgrades: []
@@ -101,17 +114,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: burnDPS
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: maxRange
         modifier:
-          name: 
           add: 0.3
           multiply: 1
       flagUpgrades: []
@@ -242,6 +252,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3362631896301680600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965188775826439053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b42e3f4e68f487ba9f9d329c0cf77f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!1 &4200971711654879236
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +527,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2047992552024771149}
+  - {fileID: 8711475530282827606}
   m_Father: {fileID: 2959914068408384694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5060277931546009581
@@ -537,7 +561,7 @@ Transform:
   m_Children:
   - {fileID: 2759899366994034821}
   - {fileID: 1064000223984385472}
-  m_Father: {fileID: 2959914068408384694}
+  m_Father: {fileID: 7117296386387936784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7477521586472166616
 GameObject:
@@ -717,7 +741,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

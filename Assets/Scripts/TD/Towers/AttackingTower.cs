@@ -72,7 +72,7 @@ namespace TowerDefense
             Attack();
             var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Medium);
             var repetition = new AudioParams.Repetition(.05f);
-            AudioController.Instance.PlaySound2D($"tower_{towerName}_shoot", attackSoundVolume, pitch: pitch, repetition: repetition);
+            AudioController.Instance.PlaySound2D($"tower_{towerID}_shoot", attackSoundVolume, pitch: pitch, repetition: repetition);
         }
     
         protected abstract void Attack();

@@ -37,7 +37,7 @@ namespace TowerDefense
         public void DeselectTile()
         {
             selectionIndicator.gameObject.SetActive(false);
-            DisplayInfoUI.Instance.Hide();
+            DisplayInfoUI.Instance?.Hide();
             
             if (!selectedTile)
                 return;

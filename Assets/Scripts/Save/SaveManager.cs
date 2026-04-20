@@ -13,7 +13,7 @@ namespace TowerDefense
         
         private void Awake()
         {
-            if(isInstanced) 
+            if(IsInstanced) 
             {
                 Destroy(gameObject);
                 return;

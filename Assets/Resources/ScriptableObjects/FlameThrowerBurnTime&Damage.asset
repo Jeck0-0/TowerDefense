@@ -1,0 +1,740 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd8c4725c6c4577be0a3512071367b1, type: 3}
+  m_Name: FlameThrowerBurnTime&Damage
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: upgrades
+      Entry: 7
+      Data: 0|TowerDefense.TowerUpgrade[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 10
+    - Name: 
+      Entry: 7
+      Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 32
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: <color=#bcb4c1>+10% Burn Duration & Damage</color>
+    - Name: upgrade
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 3|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 4|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 6|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 128
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 9|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 10|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 12|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 512
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 14|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 15|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 16|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 17|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 18|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 19|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 2048
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 20|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 21|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 22|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 23|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 24|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 25|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 8196
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 26|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 27|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 28|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 29|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 30|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 31|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 32784
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 32|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 33|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 34|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 35|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 36|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 37|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 131136
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 38|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 39|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 40|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 41|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 42|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 43|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 524544
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 44|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 45|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 46|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 47|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 48|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 49|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 2098176
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 50|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 51|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 52|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 53|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 54|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 55|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 8392704
+    - Name: targetTower
+      Entry: 1
+      Data: flamethrower
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 56|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 57|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDuration
+    - Name: modifier
+      Entry: 7
+      Data: 58|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 59|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: burnDPS
+    - Name: modifier
+      Entry: 7
+      Data: 60|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  defaultTargetTower: flameThrower
+  defaultTargetStat: 
+  upgradeTitle: Flame Trower
+  upgradeIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
+  defaultDescription: <color=#bcb4c1>+10% Burn Duration & Damage</color>
