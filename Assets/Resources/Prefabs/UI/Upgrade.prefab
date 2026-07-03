@@ -282,7 +282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3773256272046661766}
   - component: {fileID: 1000434673013938922}
-  - component: {fileID: 548599948596665306}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -359,23 +358,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &548599948596665306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850184024620801435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79dfc113102f00438b71c0331ad42d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeSeries: {fileID: 0}
-  description: {fileID: 615982142741058224}
-  price: {fileID: 2500853943811138202}
-  title: {fileID: 6266310815112865057}
-  icon: {fileID: 8778640326769235615}
 --- !u!1 &4362633082833575773
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,9 +555,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 548599948596665306}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TowerDefense.UpgradeUI, Assembly-CSharp
-        m_MethodName: BuyUpgrade
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

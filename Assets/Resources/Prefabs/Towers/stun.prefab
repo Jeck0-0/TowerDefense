@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 6193861130497882043}
   - component: {fileID: -3436987236222513301}
   - component: {fileID: -5746598715956335208}
-  - component: {fileID: 4669379796999818579}
   m_Layer: 0
   m_Name: stun
   m_TagString: Untagged
@@ -297,19 +296,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4669379796999818579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752127049823460849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 849791fb417d4fca99ed24b99ab7c11a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slot: {fileID: 0}
 --- !u!1 &2291845964236734813
 GameObject:
   m_ObjectHideFlags: 0
