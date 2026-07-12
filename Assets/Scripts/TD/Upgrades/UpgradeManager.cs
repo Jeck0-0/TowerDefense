@@ -33,9 +33,30 @@ namespace TowerDefense
 
         private List<IUpgradeCard> GetOptionsForTower(Tower t)
         {
-            List<IUpgradeCard> candidates = upgrades.weapons
-                .Where(x => x && x.WeaponType != null && t.GetComponent(x.WeaponType) == null)
-                .ToList<IUpgradeCard>();
+            List<ITowerUpgrade> candidates = new();
+
+            foreach (var weapon in upgrades.weapons)
+            {
+                if (weapon.WeaponType == null)
+                {
+                    Debug.LogWarning($"Weapon Type is null! ({weapon.name})", weapon);
+                    continue;
+                }
+                
+                if (t.GetComponent(weapon.WeaponType) != null)
+                {
+                    // already has upgrade
+                    foreach (var subUpgrade in weapon.upgrades)
+                        if (subUpgrade.VerifyRequirements(t))
+                            candidates.Add(subUpgrade);
+                }
+                else
+                {
+                    // is unequipped weapon
+                    if (weapon.VerifyRequirements(t))
+                        candidates.Add(weapon);
+                }
+            }
             
             // add items to candidates
             

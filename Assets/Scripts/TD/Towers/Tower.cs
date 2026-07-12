@@ -27,7 +27,6 @@ namespace TowerDefense
         public Stat MinRange;
     
         public Stats stats;
-        public UpgradeHandler upgradeHandler;
     
         [BoxGroup("Sound"), Range(0f, 1f)]
         public float placeSoundVolume = .5f;
@@ -43,7 +42,6 @@ namespace TowerDefense
                 effects = GetComponent<EffectHandler>();
     
             stats = GetStats();
-            upgradeHandler.SetTower(this);
     
             SetupRangeIndicators();
 

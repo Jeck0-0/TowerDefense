@@ -71,14 +71,6 @@ namespace TowerDefense
             Towers.Remove(tower);
         }
         
-        public void UnlockGlobalUpgrade(string towerId, IUpgrade upgrade)
-        {
-            foreach (var tower in Towers)
-                if(towerId == "*" || tower.towerID == towerId)
-                    tower.upgradeHandler.UnlockUpgrade("globalUpgrade", upgrade, false);
-            TowerFactory.Instance.UnlockUpgrade(towerId, upgrade);
-        }
-        
         protected void CheckVictory()
         {
             if (WaveManager.Instance.CurrentWave + 1 == winGameAtWave)

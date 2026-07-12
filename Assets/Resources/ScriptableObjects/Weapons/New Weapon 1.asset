@@ -12,11 +12,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c5e2a1ea5344bb9cc01e19da413f56, type: 3}
   m_Name: New Weapon 1
   m_EditorClassIdentifier: Assembly-CSharp:TowerDefense:WeaponData
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: requirements
+      Entry: 6
+      Data: 
+    - Name: WeaponType
+      Entry: 6
+      Data: 
+    - Name: upgrades
+      Entry: 7
+      Data: 0|TowerDefense.WeaponUpgrade[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|TowerDefense.WeaponUpgrade, Assembly-CSharp
+    - Name: cardData
+      Entry: 7
+      Data: 2|TowerDefense.CardData, Assembly-CSharp
+    - Name: Name
+      Entry: 6
+      Data: 
+    - Name: Description
+      Entry: 6
+      Data: 
+    - Name: Icon
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: requirements
+      Entry: 7
+      Data: 3|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 4|TowerDefense.RequireStats, Assembly-CSharp
+    - Name: stats
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effects
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|TowerDefense.ModifyStatUpgradeEffect, Assembly-CSharp
+    - Name: multiply
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   cardData:
     Name: 
     Description: 
     Icon: {fileID: 0}
-  upgrades: []
-  references:
-    version: 2
-    RefIds: []

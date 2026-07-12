@@ -70,25 +70,11 @@ namespace TowerDefense
             }
     
                 
-            if (MoveTowards(lastTargetPosition))
+            if (transform.MoveTowards(lastTargetPosition, speed * Time.deltaTime))
             {
                 TargetHit();
                 Destroy(gameObject);
             }
-        }
-    
-        public bool MoveTowards(Vector3 targetPosition)
-        {
-            bool reached = false;
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            var moveby = direction * speed * Time.deltaTime;
-    
-            if (Vector3.Distance(targetPosition, transform.position) < speed * Time.deltaTime)
-                reached = true;
-    
-            transform.up = direction;
-            transform.position += moveby;
-            return reached;
         }
     
     

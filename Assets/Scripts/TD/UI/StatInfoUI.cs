@@ -13,6 +13,7 @@ namespace TowerDefense
         [SerializeField] Image currentValue;
         [SerializeField] Image upgradeValue;
     
+        /*
         Stat stat;
         UpgradeHandler upgradeHandler;
         float maxValue;
@@ -66,7 +67,7 @@ namespace TowerDefense
             {
                 upgradeValue.transform.localScale = Vector3.zero;
             }
-        }
+        }*/
     }
     
 }

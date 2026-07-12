@@ -31,4 +31,25 @@ public static class Extensions
         new Vector2Int( 1, -1),
         new Vector2Int( 1,  0),
     };
+
+    public static bool MoveTowards(this Transform transform, Vector3 targetPosition, float moveAmount, bool rotate = true)
+    {
+        Vector3 from = transform.position.XY();
+        Vector3 to = targetPosition.XY();
+        Vector3 direction = (to - from).normalized;
+
+        if (rotate)
+            transform.up = direction;
+
+        if (Vector3.Distance(from, to) < moveAmount)
+        {
+            transform.position = targetPosition;
+            return true;
+        }
+    
+        var moveBy = direction * moveAmount;
+        transform.position += moveBy;
+        
+        return false;
+    }
 }

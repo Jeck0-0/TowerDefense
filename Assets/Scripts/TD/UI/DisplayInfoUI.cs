@@ -19,7 +19,6 @@ namespace TowerDefense
         [SerializeField] GameObject shopParent;
         [SerializeField] List<StatInfoUI> statList;
 
-        [SerializeField] TowerUIButtons towerButtons;
 
         private void Awake()
         {
@@ -45,7 +44,6 @@ namespace TowerDefense
             infoBeforePreview = info;
 
             shopParent.SetActive(false);
-            towerButtons.gameObject.SetActive(false);
             statList.ForEach(x => x.gameObject.SetActive(false));
 
             ShowInfo(info);
@@ -76,7 +74,6 @@ namespace TowerDefense
         protected void ShowTower(TowerDisplayInfo info)
         {
             var stats = info.tower.GetStats();
-            var upgrades = info.tower.upgradeHandler;
     
             if (stats != null)
             {
@@ -86,7 +83,7 @@ namespace TowerDefense
                     if (!StatDisplayOptions.ShouldShowStat(stat.Key) || stat.Value.MaxValue == 0)
                         continue;
     
-                    statList[i].DisplayStat(stat.Value, upgrades);
+                    //statList[i].DisplayStat(stat.Value, info.tower.upgradeHandler);
     
                     i++;
                     if (i >= statList.Count)
@@ -94,7 +91,6 @@ namespace TowerDefense
                 }
             }
 
-            towerButtons.ShowInfo(info.tower);
         }
     
         protected void ShowInfo(BaseDisplayInfo info)

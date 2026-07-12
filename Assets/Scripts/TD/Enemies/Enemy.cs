@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -17,7 +18,9 @@ namespace TowerDefense
     
         [HideInInspector]
         public EffectHandler EffectHandler;
-
+        
+        private static GameObject drop;
+        
         public float scaling { protected set; get; } = 1;
         public virtual void SetScaling(float scaling)
         {
@@ -80,7 +83,11 @@ namespace TowerDefense
             void Die()
             {
                 //GameStats.Instance.ModifyCoins((int)MoneyReward);
-    
+                if (drop == null)
+                    drop = Resources.Load<GameObject>("Prefabs/BitDrop");
+                var d = Instantiate(drop, transform.position, Quaternion.identity);
+                d.GetOrAddComponent<BitDrop>().Initialize((int)MoneyReward);
+                
                 var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Small);
                 var repetition = new AudioParams.Repetition(.05f);
                 AudioController.Instance.PlaySound2D("enemy_death", .2f, pitch: pitch, repetition: repetition);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c5e2a1ea5344bb9cc01e19da413f56, type: 3}
-  m_Name: New Weapon 2
+  m_Name: New Weapon 3
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -43,26 +43,20 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: WeaponType
-      Entry: 7
-      Data: 2|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: TowerDefense.TestWeapon, Assembly-CSharp
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: upgrades
       Entry: 7
-      Data: 3|TowerDefense.WeaponUpgrade[], Assembly-CSharp
+      Data: 2|TowerDefense.WeaponUpgrade[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
-      Data: 4|TowerDefense.WeaponUpgrade, Assembly-CSharp
+      Data: 3|TowerDefense.WeaponUpgrade, Assembly-CSharp
     - Name: cardData
       Entry: 7
-      Data: 5|TowerDefense.CardData, Assembly-CSharp
+      Data: 4|TowerDefense.CardData, Assembly-CSharp
     - Name: Name
       Entry: 6
       Data: 
@@ -76,11 +70,84 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: requirements
-      Entry: 6
+      Entry: 7
+      Data: 5|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|TowerDefense.RequireStats, Assembly-CSharp
+    - Name: stats
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: range
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: effects
       Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+      Data: 8|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 9|TowerDefense.ModifyStatUpgradeEffect, Assembly-CSharp
+    - Name: multiply
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|TowerDefense.WeaponUpgrade, Assembly-CSharp
+    - Name: cardData
+      Entry: 6
+      Data: 
+    - Name: requirements
+      Entry: 7
+      Data: 11|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effects
+      Entry: 7
+      Data: 12|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -96,10 +163,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|TowerDefense.WeaponUpgrade, Assembly-CSharp
+      Data: 13|TowerDefense.WeaponUpgrade, Assembly-CSharp
     - Name: cardData
       Entry: 7
-      Data: 8|TowerDefense.CardData, Assembly-CSharp
+      Data: 14|TowerDefense.CardData, Assembly-CSharp
     - Name: Name
       Entry: 6
       Data: 
@@ -114,7 +181,7 @@ MonoBehaviour:
       Data: 
     - Name: requirements
       Entry: 7
-      Data: 9|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+      Data: 15|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -126,7 +193,7 @@ MonoBehaviour:
       Data: 
     - Name: effects
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+      Data: 16|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -147,6 +214,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   cardData:
-    Name: Test weapon data
-    Description: nfiuwafbweibfauowedbjfa
-    Icon: {fileID: 2125737359283935466, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
+    Name: 
+    Description: 
+    Icon: {fileID: 0}
