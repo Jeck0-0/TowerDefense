@@ -22,7 +22,14 @@ namespace TowerDefense
             tempStats.AddStat("slowAmount", SlowAmount);
             return tempStats;
         }
-    
+
+        protected override void ManagedInitialize()
+        {
+            base.ManagedInitialize();
+            OnTargetFoundEvent += TargetFound;
+            OnTargetLostEvent += TargetLost;
+        }
+
         protected override void Attack()
         {
             foreach(Enemy e in GetEnemiesInRange())
@@ -36,7 +43,7 @@ namespace TowerDefense
             }
         }
     
-        protected override void OnTargetFound()
+        protected void TargetFound(AttackingTower tower, Targetable target)
         {
             if (freezeSound)
                 Destroy(freezeSound.gameObject); 
@@ -44,7 +51,7 @@ namespace TowerDefense
     
         }
     
-        protected override void OnTargetLost()
+        protected void TargetLost(AttackingTower tower, Targetable target)
         {
             if(freezeSound)
                 Destroy(freezeSound.gameObject);

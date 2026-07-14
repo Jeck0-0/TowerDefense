@@ -8,7 +8,7 @@ namespace TowerDefense
     [Serializable, HideReferenceObjectPicker]
     public abstract class WeaponEffect
     {
-        public abstract void Apply(Tower tower);
+        public abstract void Apply(Weapon weapon, Tower tower);
         
 
         [OnInspectorGUI("UpdateTypeLabel"), HideLabel, Space(20)]
@@ -26,14 +26,43 @@ namespace TowerDefense
     }
     
     [Serializable]
-    public class ModifyStatUpgradeEffect : WeaponEffect
+    public class ModifyTowerStatEffect : WeaponEffect
     {
-        public int multiply;
+        public string statName;
+        public float add;
+        public float multiply = 1;
         
-        
-        public override void Apply(Tower tower)
+        public override void Apply(Weapon weapon, Tower tower)
         {
-            Debug.Log(multiply + tower.towerName);
+            tower.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
         }
     }
+    [Serializable]
+    public class ModifyWeaponStatEffect : WeaponEffect
+    {
+        public string statName;
+        public float add;
+        public float multiply = 1;
+        
+        public override void Apply(Weapon weapon, Tower tower)
+        {
+            weapon.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
+        }
+    }
+    /*[Serializable]
+    public class StatWeaponEffect : WeaponEffect
+    {
+        public string statName;
+        public Stat stat;
+        
+        public override void Apply(Weapon weapon, Tower tower)
+        {
+            if (weapon.GetStats().HasStat(statName))
+            {
+                Debug.LogWarning("Weapon already has stat: " + statName, weapon);
+                return;
+            }
+            weapon.GetStats().AddStat(statName, stat);
+        }
+    }*/
 }

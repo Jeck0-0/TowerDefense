@@ -37,7 +37,7 @@ namespace TowerDefense
         public bool HasStat(string name) => stats.ContainsKey(name);
     
         public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
-            => stats[statName].AddModifier(modifierName, add, multiply, overrideIfDuplicate);
+            => stats[statName].SetModifier(modifierName, add, multiply, overrideIfDuplicate);
     
         public bool HasModifier(string statName, string modifierName)
             => stats[statName].HasModifier(modifierName);
@@ -163,18 +163,18 @@ namespace TowerDefense
             UpdateValue();
         }
     
-        public void AddModifier(string id, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
+        public void SetModifier(string id, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
         {
+            //create new (regardless of override)
+            if(!modifiers.ContainsKey(id))
+            {
+                modifiers[id] = new StatModifier(add, multiply);
+            }
             //override existing
-            if (modifiers.ContainsKey(id) && overrideIfDuplicate)
+            else if (overrideIfDuplicate)
             {
                 modifiers[id].multiply = multiply;
                 modifiers[id].add = add;
-            }
-            //create new (regardless of override)
-            else if(!modifiers.ContainsKey(id))
-            {
-                modifiers[id] = new StatModifier(add, multiply);
             }
             //no override (sum)
             else
@@ -192,8 +192,7 @@ namespace TowerDefense
         }
         public void RemoveModifier(string id)
         {
-            if (modifiers.ContainsKey(id))
-                modifiers.Remove(id);
+            modifiers.Remove(id);
             UpdateValue();
         }
     
@@ -213,7 +212,7 @@ namespace TowerDefense
             float previousValue = Value;
             Value = GetValueWithModifiers(this, modifiers.Values);
     
-            if (previousValue != Value)
+            if (!Mathf.Approximately(previousValue, Value))
             {
                 OnValueChanged?.Invoke(new StatValueChangedEventArgs(previousValue, Value));
             }

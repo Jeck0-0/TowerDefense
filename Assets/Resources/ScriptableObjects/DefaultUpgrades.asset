@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: DefaultUpgrades
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 11400000, guid: 408c9f9b23882c949bfc11de575cdf8e, type: 2}
+  - {fileID: 11400000, guid: c3cc2493bf1a4a345898a7a4c21f1bc4, type: 2}
+  - {fileID: 11400000, guid: 3d59e9a54431ca44e99cceadc870fddb, type: 2}

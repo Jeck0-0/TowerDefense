@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c5e2a1ea5344bb9cc01e19da413f56, type: 3}
+  m_Name: Minigun
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 2125737359283935466, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: requirements
+      Entry: 7
+      Data: 0|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|TowerDefense.RequireTowerType, Assembly-CSharp
+    - Name: towerType
+      Entry: 7
+      Data: 2|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 3|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TowerDefense.ProjectileTower, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TowerDefense.StunTower, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: WeaponType
+      Entry: 7
+      Data: 5|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TowerDefense.MinigunWeapon, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: upgrades
+      Entry: 7
+      Data: 6|TowerDefense.WeaponUpgrade[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 7|TowerDefense.WeaponUpgrade, Assembly-CSharp
+    - Name: cardData
+      Entry: 7
+      Data: 8|TowerDefense.CardData, Assembly-CSharp
+    - Name: Name
+      Entry: 1
+      Data: Minigun Max Speed
+    - Name: Description
+      Entry: 1
+      Data: Increases the maximum attack speed boost.
+    - Name: Icon
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: requirements
+      Entry: 7
+      Data: 9|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effects
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
+    - Name: statName
+      Entry: 1
+      Data: maxBoost
+    - Name: add
+      Entry: 4
+      Data: 0.15
+    - Name: multiply
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|TowerDefense.WeaponUpgrade, Assembly-CSharp
+    - Name: cardData
+      Entry: 7
+      Data: 13|TowerDefense.CardData, Assembly-CSharp
+    - Name: Name
+      Entry: 1
+      Data: Minigun Boost Step
+    - Name: Description
+      Entry: 1
+      Data: Increases the attack speed boost given for every attack
+    - Name: Icon
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: requirements
+      Entry: 9
+      Data: 9
+    - Name: effects
+      Entry: 7
+      Data: 14|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 15|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
+    - Name: statName
+      Entry: 1
+      Data: boostIncreaseStep
+    - Name: add
+      Entry: 4
+      Data: 0.025
+    - Name: multiply
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  cardData:
+    Name: Minigun
+    Description: Increase attack when shooting the same target.
+    Icon: {fileID: 2125737359283935466, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
+  effects: []
+  references:
+    version: 2
+    RefIds: []

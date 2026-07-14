@@ -23,6 +23,33 @@ namespace TowerDefense
         [Header("Runtime")]
         public Targetable target;
     
+        public delegate void AttackEvent(AttackingTower attacker, Targetable primaryTarget, IEnumerable<Targetable> allTargets);
+        public event AttackEvent OnAttack;
+        /*public delegate void ShootEvent(AttackingTower attacker, Targetable primaryTarget, IEnumerable<Targetable> allTargets);
+        public event ShootEvent OnShoot;*/
+        
+        public delegate float ModifyDamage(AttackingTower attacker, GameObject attackSource, ref float currentDamage, Targetable target);
+        public event ModifyDamage OnModifyDamage;
+
+        /*public delegate void TargetHit(AttackingTower attacker, Targetable primary, IEnumerable<Targetable> allTargets);
+        public event TargetHit OnTargetHit;*/
+        
+        public delegate void OnDamage(AttackingTower attacker, Targetable target, float originalAmount, float unblockedAmount, bool killed);
+        public event OnDamage OnDamageEvent;
+        public delegate void OnTargetLost(AttackingTower attacker, Targetable previousTarget);
+        public event OnTargetLost OnTargetLostEvent;
+        public delegate void OnTargetFound(AttackingTower attacker, Targetable target);
+        public event OnTargetFound OnTargetFoundEvent;
+
+
+        public void DamageTarget(Targetable target, float damage, GameObject attackSource)
+        {
+            //damage = OnModifyDamage?.Invoke(this, attackSource, ref damage, target) ?? damage;
+            OnModifyDamage?.Invoke(this, attackSource, ref damage, target);
+            var dmgReport = target.Damage(damage);
+            OnDamageEvent?.Invoke(this, target, damage, dmgReport.Dealt, dmgReport.Killed);
+        }
+        
         public override Stats GetStats()
         {
             if(stats != null) 
@@ -49,7 +76,7 @@ namespace TowerDefense
             if (!IsValidTarget(target))
             {
                 if (hadTargetLastFrame)
-                    OnTargetLost();
+                    OnTargetLostEvent?.Invoke(this, target);
                 hadTargetLastFrame = false;
     
                 FindNewTarget();
@@ -57,7 +84,7 @@ namespace TowerDefense
                 if (target == null)
                     return;
     
-                OnTargetFound();
+                OnTargetFoundEvent?.Invoke(this, target);
                 hadTargetLastFrame = true;
             }
     
@@ -69,14 +96,18 @@ namespace TowerDefense
             if (nextShotTime > 0) return;
             nextShotTime = 1 / AttackSpeed;
     
+            OnAttack?.Invoke(this, target, null);
             Attack();
+            
             var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Medium);
             var repetition = new AudioParams.Repetition(.05f);
             AudioController.Instance.PlaySound2D($"tower_{towerID}_shoot", attackSoundVolume, pitch: pitch, repetition: repetition);
         }
     
         protected abstract void Attack();
-    
+        
+        //protected abstract void Shoot(Targetable target, Vector3? direction);
+        
     
         protected virtual bool IsValidTarget(Targetable t)
         {
@@ -137,9 +168,6 @@ namespace TowerDefense
             hit.Where(x => Vector3.Distance(x.collider.transform.position, transform.position) >= MinRange);
             return hit.Select(x => x.collider.GetComponent<Enemy>()).Where(x => x != null && x.isAlive).ToList();
         }
-    
-        protected virtual void OnTargetFound() { }
-        protected virtual void OnTargetLost() { }
     
     
         private void OnDrawGizmosSelected()

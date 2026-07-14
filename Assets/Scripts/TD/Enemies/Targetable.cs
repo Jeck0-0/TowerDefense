@@ -53,18 +53,27 @@ namespace TowerDefense
             currentHealth = currentHealth / args.previousValue * args.newValue;
         }
     
-        public void Damage(float amount)
+        public record DamageReport(float Dealt, bool Killed);
+        public DamageReport Damage(float amount)
         {
             if (amount <= 0)
-                return;
-    
-            currentHealth -= amount * stats["damageTakenMultiplier"];
-    
-            HealthChanged?.Invoke();
-    
-            if (currentHealth < .001f)
+                return new DamageReport(0, false);
+
+            float dmg = amount * stats["damageTakenMultiplier"];
+            
+            if (dmg + 0.001f > currentHealth)
+            {
+                currentHealth = 0;
+                HealthChanged?.Invoke();
                 Kill();
+                return new DamageReport(currentHealth, true);
+            }
+
+            currentHealth -= dmg;
+            HealthChanged?.Invoke();
+            return new DamageReport(dmg, false);
         }
+
     
         public void Heal(float amount)
         {

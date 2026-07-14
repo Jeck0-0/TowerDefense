@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,7 +32,13 @@ namespace TowerDefense
         }
 
 
-        private List<IUpgradeCard> GetOptionsForTower(Tower t)
+        public void UnlockTowerUpgrade(Tower t, ITowerUpgrade upgrade)
+        {
+            upgrade.ApplyUpgrade(t);
+        }
+
+
+        private List<ITowerUpgrade> GetOptionsForTower(Tower t)
         {
             List<ITowerUpgrade> candidates = new();
 
@@ -60,7 +67,7 @@ namespace TowerDefense
             
             // add items to candidates
             
-            List<IUpgradeCard> options = new List<IUpgradeCard>();
+            List<ITowerUpgrade> options = new List<ITowerUpgrade>();
             for (int i = 0; i < optionsAmount; i++)
             {
                 if (candidates.Count <= 0)

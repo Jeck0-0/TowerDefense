@@ -1,5 +1,5 @@
 using Sirenix.OdinInspector;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,9 @@ namespace TowerDefense
         [DisableInEditorMode, SerializeField] private float splashArea;
         [DisableInEditorMode, SerializeField] private Targetable target;
         [DisableInEditorMode, SerializeField] private bool destroyIfTargetDied;
-    
+        [DisableInEditorMode, SerializeField] private AttackingTower attacker;
+        private AttackingTower.OnDamage onDamage;
+        
         [SerializeField] string hitSoundEffect = "";
         [SerializeField] float hitSoundVolume = 1;
     
@@ -23,9 +25,14 @@ namespace TowerDefense
     
         protected Vector3 lastTargetPosition;
         private bool isInitialized;
-        public void Initialize(float damage, float speed, float lifetime, float splashArea, Targetable target, bool destroyIfTargetDied, string hitSoundEffect = null, float hitSoundVolume = -1f)
+
+        public void Initialize(AttackingTower attacker, float damage, float speed, float lifetime, float splashArea,
+            Targetable target, bool destroyIfTargetDied, string hitSoundEffect = null, float hitSoundVolume = -1f,
+            AttackingTower.OnDamage onDamage = null)
         {
             isInitialized = true;
+            this.onDamage = onDamage;
+            this.attacker = attacker;
             this.damage = damage;
             this.speed = speed;
             this.lifetime = lifetime;
@@ -36,7 +43,7 @@ namespace TowerDefense
     
             if (!string.IsNullOrEmpty(hitSoundEffect))
                 this.hitSoundEffect = hitSoundEffect;
-            if(hitSoundVolume != -1)
+            if(!Mathf.Approximately(hitSoundVolume, -1))
                 this.hitSoundVolume = hitSoundVolume;
         }
     
@@ -91,10 +98,11 @@ namespace TowerDefense
             var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Medium);
             var repetition = new AudioParams.Repetition(.05f);
             AudioController.Instance.PlaySound2D(hitSoundEffect, hitSoundVolume, pitch: pitch, repetition: repetition);
-    
+            
             if (splashArea <= 0)
             {
-                target.Damage(damage);
+                if(attacker) attacker.DamageTarget(target, damage, gameObject);
+                else target.Damage(damage);
             }
             else
             {
@@ -103,7 +111,10 @@ namespace TowerDefense
                 {
                     var targetable = h.transform.GetComponent<Targetable>();
                     if (targetable)
-                        targetable.Damage(damage);
+                    {
+                        if(attacker) attacker.DamageTarget(targetable, damage, gameObject);
+                        else targetable.Damage(damage);
+                    }
                 }
     
                 if(impactGO)

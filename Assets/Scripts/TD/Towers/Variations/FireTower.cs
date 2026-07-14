@@ -21,8 +21,11 @@ namespace TowerDefense
             base.ManagedInitialize();
             contactFilter.useTriggers = true;
             fireParticles.Stop();
+            OnTargetFoundEvent += TargetFound;
+            OnTargetLostEvent += TargetLost;
         }
     
+        
         public override Stats GetStats()
         {
             if (stats != null)
@@ -51,7 +54,7 @@ namespace TowerDefense
             }
         }
     
-        protected override void OnTargetFound()
+        protected void TargetFound(AttackingTower tower, Targetable target)
         {
             fireParticles.Play();
             if (fireSound)
@@ -59,7 +62,7 @@ namespace TowerDefense
             fireSound = AudioController.Instance.PlaySound2D("tower_" + towerID + "_loop", attackSoundVolume, looping: true);
         }
     
-        protected override void OnTargetLost()
+        protected void TargetLost(AttackingTower tower, Targetable target)
         {
             fireParticles.Stop();
             if(fireSound)

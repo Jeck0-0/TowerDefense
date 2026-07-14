@@ -14,12 +14,25 @@ namespace TowerDefense
 
     public class RequireTowerType : TowerUpgradeRequirement
     {
+        [ValueDropdown(nameof(GetTowers))]
         public Type[] towerType;
 
         public override bool Verify(Tower t)
         {
             return towerType.Any(x => t.GetType() == x);
         }
+        
+        
+        private static IEnumerable<Type> GetTowers()
+        {
+            return AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetTypes())
+                .Where(t =>
+                    typeof(Tower).IsAssignableFrom(t) &&
+                    !t.IsAbstract &&
+                    !t.IsGenericType);
+        }
+        
     }
     public class RequireStats : TowerUpgradeRequirement
     {

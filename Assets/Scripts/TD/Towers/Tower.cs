@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 namespace TowerDefense
 {
     [RequireComponent(typeof(EffectHandler))]
-    public class Tower : Interactable2D, IStatObject
+    public abstract class Tower : Interactable2D, IStatObject
     {
         public ITowerSlot Slot { get; protected set; }
         public Tile Tile => Slot as Tile;
