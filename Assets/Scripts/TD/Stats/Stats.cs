@@ -36,7 +36,7 @@ namespace TowerDefense
         
         public bool HasStat(string name) => stats.ContainsKey(name);
     
-        public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
+        public void SetModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
             => stats[statName].SetModifier(modifierName, add, multiply, overrideIfDuplicate);
     
         public bool HasModifier(string statName, string modifierName)

@@ -106,6 +106,8 @@ MonoBehaviour:
   splashArea: 0
   target: {fileID: 0}
   destroyIfTargetDied: 0
+  attacker: {fileID: 0}
   hitSoundEffect: 
   hitSoundVolume: 0
   impactEffect: {fileID: 8931608583448840551, guid: 3dea9e1c0789f3a4480c5195143552d4, type: 3}
+  impactColor: {r: 0.75307256, g: 0.38039216, b: 0.7607843, a: 0.25490198}

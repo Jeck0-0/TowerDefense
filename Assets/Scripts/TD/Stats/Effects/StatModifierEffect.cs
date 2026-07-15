@@ -26,7 +26,7 @@ namespace TowerDefense
         {
             foreach (var mod in modifiers)
             {
-                target.AddModifier(mod.statName, modifierName, mod.add, mod.multiply);
+                target.SetModifier(mod.statName, modifierName, mod.add, mod.multiply);
             }
         }
     

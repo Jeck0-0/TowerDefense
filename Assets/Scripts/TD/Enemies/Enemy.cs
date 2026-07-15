@@ -24,7 +24,7 @@ namespace TowerDefense
         public float scaling { protected set; get; } = 1;
         public virtual void SetScaling(float scaling)
         {
-            stats.AddModifier("maxHealth", "scaling", 0, scaling);
+            stats.SetModifier("maxHealth", "scaling", 0, scaling);
             
             var scalable = GetComponents<IScalable>();
             foreach (var s in scalable)

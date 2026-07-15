@@ -22,7 +22,7 @@ namespace TowerDefense
         {
             if (upgrades == null)
                 Debug.LogError("No upgrade collection selected!");
-            upgradeUIParent.gameObject.SetActive(false);
+            DestroyOptions();
         }
 
         [Button]
@@ -43,14 +43,19 @@ namespace TowerDefense
 
         public void ChooseTowerUpgrade(TowerUpgrades t, ITowerUpgrade upgrade)
         {
-            for (int i = upgradeUIParent.childCount - 1; i > 0 ; i--)
-                Destroy(upgradeUIParent.GetChild(i).gameObject);
-            upgradeUIParent.gameObject.SetActive(false);
+            DestroyOptions();
             
             var towerUpgrades = t.GetOrAddComponent<TowerUpgrades>();
             towerUpgrades.UnlockUpgrade(upgrade);
         }
 
+        protected void DestroyOptions()
+        {
+            for (int i = upgradeUIParent.childCount - 1; i > 0 ; i--)
+                Destroy(upgradeUIParent.GetChild(i).gameObject);
+            upgradeUIParent.gameObject.SetActive(false);
+        }
+        
 
         private List<ITowerUpgrade> GetOptionsForTower(TowerUpgrades t)
         {

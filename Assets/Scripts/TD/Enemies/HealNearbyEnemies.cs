@@ -54,7 +54,7 @@ namespace TowerDefense
 
         public void ApplyScaling(Stats stats, float scaling)
         {
-            stats.AddModifier("healEffectiveness", "scaling", 0, scaling);
+            stats.SetModifier("healEffectiveness", "scaling", 0, scaling);
         }
 
         public Stats GetStats()

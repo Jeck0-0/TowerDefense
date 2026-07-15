@@ -60,7 +60,7 @@ namespace TowerDefense
         private void OnAttack(AttackingTower attacker, Targetable primaryTarget, IEnumerable<Targetable> allTargets)
         {
             currentBoost = Mathf.Min(currentBoost + BoostIncreaseStep, MaxBoost);
-            attackingTower.GetStats().AddModifier("attackSpeed", "weapon_minigun", multiply: currentBoost,
+            attackingTower.GetStats().SetModifier("attackSpeed", "weapon_minigun", multiply: currentBoost + 1,
                 overrideIfDuplicate: true);
         }
         

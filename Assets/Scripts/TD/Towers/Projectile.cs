@@ -87,13 +87,15 @@ namespace TowerDefense
     
         protected void TargetHit()
         {
-            GameObject impactGO = null;
             if (impactEffect)
             {
-                impactGO = Instantiate(impactEffect, transform.position, transform.rotation);
-                impactGO.GetComponent<ImpactEffect>()?.SetColor(impactColor);
+                var go = Instantiate(impactEffect, transform.position, transform.rotation);
+                var impact = go.GetComponent<ImpactEffect>();
+                
+                impact.SetRange(splashArea, impactColor);
+                impact.SetImpact(1, impactColor);
+                Destroy(go, .2f);
             }
-            Destroy(impactGO, .2f);
     
             var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Medium);
             var repetition = new AudioParams.Repetition(.05f);
@@ -116,9 +118,6 @@ namespace TowerDefense
                         else targetable.Damage(damage);
                     }
                 }
-    
-                if(impactGO)
-                    impactGO.transform.localScale = Vector3.one * splashArea;
             }
         }
     

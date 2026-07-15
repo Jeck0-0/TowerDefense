@@ -20,7 +20,7 @@ namespace TowerDefense
 
         public override bool Verify(TowerUpgrades t, ITowerUpgrade upgrade)
         {
-            return towerType.Any(x => t.GetType() == x);
+            return towerType.Any(x => t.Tower.GetType().IsEquivalentTo(x));
         }
         
         

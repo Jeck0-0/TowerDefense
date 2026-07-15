@@ -12,7 +12,7 @@ namespace TowerDefense
         public Tower Tower => tower ?? GetComponent<Tower>();
 
         private Tower tower;
-        private Dictionary<WeaponData, UnlockedWeaponData> unlockedWeapons;
+        private Dictionary<WeaponData, UnlockedWeaponData> unlockedWeapons = new();
         
         private void Awake()
         {

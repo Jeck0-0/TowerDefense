@@ -165,18 +165,27 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: requirements
-      Entry: 9
-      Data: 9
+      Entry: 7
+      Data: 14|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: effects
       Entry: 7
-      Data: 14|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+      Data: 15|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 15|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
+      Data: 16|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
     - Name: statName
       Entry: 1
       Data: boostIncreaseStep

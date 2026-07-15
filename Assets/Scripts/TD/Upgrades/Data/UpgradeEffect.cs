@@ -34,7 +34,9 @@ namespace TowerDefense
         
         public override void Apply(Weapon weapon, TowerUpgrades tower)
         {
-            tower.Tower.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
+            Debug.Log(statName + ": " + tower.Tower.GetStats()[statName]);
+            tower.Tower.GetStats().SetModifier(statName, "weapon_" + weapon.name, add, multiply, false);
+            Debug.Log(statName + ": " + tower.Tower.GetStats()[statName]);
         }
     }
     [Serializable]
@@ -46,7 +48,7 @@ namespace TowerDefense
         
         public override void Apply(Weapon weapon, TowerUpgrades tower)
         {
-            weapon.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
+            weapon.GetStats().SetModifier(statName, "weapon_" + weapon.name, add, multiply, false);
         }
     }
     /*[Serializable]
