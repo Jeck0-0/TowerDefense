@@ -8,7 +8,7 @@ namespace TowerDefense
     [Serializable, HideReferenceObjectPicker]
     public abstract class WeaponEffect
     {
-        public abstract void Apply(Weapon weapon, Tower tower);
+        public abstract void Apply(Weapon weapon, TowerUpgrades tower);
         
 
         [OnInspectorGUI("UpdateTypeLabel"), HideLabel, Space(20)]
@@ -32,9 +32,9 @@ namespace TowerDefense
         public float add;
         public float multiply = 1;
         
-        public override void Apply(Weapon weapon, Tower tower)
+        public override void Apply(Weapon weapon, TowerUpgrades tower)
         {
-            tower.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
+            tower.Tower.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
         }
     }
     [Serializable]
@@ -44,7 +44,7 @@ namespace TowerDefense
         public float add;
         public float multiply = 1;
         
-        public override void Apply(Weapon weapon, Tower tower)
+        public override void Apply(Weapon weapon, TowerUpgrades tower)
         {
             weapon.GetStats().AddModifier(statName, "weapon_" + weapon.name, add, multiply, false);
         }

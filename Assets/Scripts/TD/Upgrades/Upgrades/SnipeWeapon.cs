@@ -4,8 +4,8 @@ namespace TowerDefense
 {
     public class SnipeWeapon : Weapon
     {
-        public Stat MaxBoost;
-        public Stat DamageBoostPerUnit;
+        public Stat MaxBoost = new();
+        public Stat DamageBoostPerUnit = new();
         
         public override Stats GetStats()
         {

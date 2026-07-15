@@ -16,8 +16,8 @@ namespace TowerDefense
     {
         public TowerUpgradeRequirement[] TowerUpgradeRequirements { get; }
 
-        public bool VerifyRequirements(Tower t);
-        public void ApplyUpgrade(Tower t);
+        public bool VerifyRequirements(TowerUpgrades t);
+        public void ApplyUpgrade(TowerUpgrades t);
     }
 
     [Serializable]

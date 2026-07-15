@@ -6,8 +6,8 @@ namespace TowerDefense
 {
     public class MinigunWeapon : Weapon
     {
-        public Stat MaxBoost;
-        public Stat BoostIncreaseStep;
+        public Stat MaxBoost = new ();
+        public Stat BoostIncreaseStep = new ();
         
         
         private float currentBoost;

@@ -27,8 +27,8 @@ namespace TowerDefense
         [NonSerialized, OdinSerialize]
         public WeaponUpgrade[] upgrades = Array.Empty<WeaponUpgrade>();
         
-        public bool VerifyRequirements(Tower t) => TowerUpgradeRequirements.All(x => x.Verify(t));
-        public void ApplyUpgrade(Tower t)
+        public bool VerifyRequirements(TowerUpgrades t) => TowerUpgradeRequirements.All(x => x.Verify(t, this));
+        public void ApplyUpgrade(TowerUpgrades t)
         {
             var w = t.gameObject.AddComponent(WeaponType) as Weapon;
             w.Initialize(this);
@@ -69,8 +69,8 @@ namespace TowerDefense
         public WeaponData Weapon { get; private set; }
         internal void SetWeapon(WeaponData weapon) => Weapon = weapon;
 
-        public bool VerifyRequirements(Tower t) => TowerUpgradeRequirements.All(x => x.Verify(t));
-        public void ApplyUpgrade(Tower t)
+        public bool VerifyRequirements(TowerUpgrades t) => TowerUpgradeRequirements.All(x => x.Verify(t, this));
+        public void ApplyUpgrade(TowerUpgrades t)
         {
             var w = (Weapon)t.GetComponent(Weapon.WeaponType);
             w.LevelUp();

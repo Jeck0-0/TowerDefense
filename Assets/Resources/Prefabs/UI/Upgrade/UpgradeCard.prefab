@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3993345796267255582}
   - component: {fileID: 2320721993953890963}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2850122076581641700}
   - component: {fileID: 64833990897467099}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4.29}
+  m_AnchoredPosition: {x: 0, y: 4.290001}
   m_SizeDelta: {x: -0.62, y: -8.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8950972784913361938
@@ -432,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6834916860640876318}
   - component: {fileID: 2226299264673848711}
+  - component: {fileID: 4620557341858311645}
   m_Layer: 5
   m_Name: UpgradeCard
   m_TagString: Untagged
@@ -458,7 +459,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 81.89, y: 118.25}
+  m_SizeDelta: {x: 90, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2226299264673848711
 CanvasRenderer:
@@ -468,6 +469,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6967258266253384160}
   m_CullTransparentMesh: 1
+--- !u!114 &4620557341858311645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967258266253384160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1017ed3e735bc54eb1a4b7028005438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 2320721993953890963}
+  description: {fileID: 7902531300744689332}
+  type: {fileID: 64833990897467099}
+  icon: {fileID: 5927181705138162894}
 --- !u!1 &7525686817510284156
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +673,7 @@ GameObject:
   - component: {fileID: 7923303820827452928}
   - component: {fileID: 7902531300744689332}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,7 +695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.86}
+  m_AnchoredPosition: {x: 0, y: -5.8600006}
   m_SizeDelta: {x: -24, y: -53.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7923303820827452928
@@ -901,4 +918,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6797477779059816539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4620557341858311645}
+        m_TargetAssemblyTypeName: TowerDefense.UpgradeCardUI, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

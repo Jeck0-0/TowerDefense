@@ -8,40 +8,54 @@ using Random = UnityEngine.Random;
 
 namespace TowerDefense
 {
-    public class UpgradeManager : MonoBehaviour
+    public class UpgradeManager : Singleton<UpgradeManager>
     {
         [Required] public UpgradeCollection upgrades;
-
         public int optionsAmount = 3;
+
+        [Title("UI")]
+        [SerializeField] private Transform upgradeUIParent;
+        [SerializeField] private GameObject upgradeUIPrefab;
+        
         
         private void Awake()
         {
             if (upgrades == null)
                 Debug.LogError("No upgrade collection selected!");
+            upgradeUIParent.gameObject.SetActive(false);
         }
 
         [Button]
         public void ShowTowerUpgrades(Tower t)
         {
-            var options = GetOptionsForTower(t);
+            TowerUpgrades towerUpgrades = t.GetOrAddComponent<TowerUpgrades>();
+            var options = GetOptionsForTower(towerUpgrades);
 
+            upgradeUIParent.gameObject.SetActive(true);
             foreach (var option in options)
             {
+                var cardUI = Instantiate(upgradeUIPrefab, upgradeUIParent).GetComponent<UpgradeCardUI>();
+                cardUI.DisplayCard(option, () => { ChooseTowerUpgrade(towerUpgrades, option); });
                 Debug.Log(option.CardData.Name);
             }
         }
 
 
-        public void UnlockTowerUpgrade(Tower t, ITowerUpgrade upgrade)
+        public void ChooseTowerUpgrade(TowerUpgrades t, ITowerUpgrade upgrade)
         {
-            upgrade.ApplyUpgrade(t);
+            for (int i = upgradeUIParent.childCount - 1; i > 0 ; i--)
+                Destroy(upgradeUIParent.GetChild(i).gameObject);
+            upgradeUIParent.gameObject.SetActive(false);
+            
+            var towerUpgrades = t.GetOrAddComponent<TowerUpgrades>();
+            towerUpgrades.UnlockUpgrade(upgrade);
         }
 
 
-        private List<ITowerUpgrade> GetOptionsForTower(Tower t)
+        private List<ITowerUpgrade> GetOptionsForTower(TowerUpgrades t)
         {
             List<ITowerUpgrade> candidates = new();
-
+            
             foreach (var weapon in upgrades.weapons)
             {
                 if (weapon.WeaponType == null)
@@ -50,7 +64,7 @@ namespace TowerDefense
                     continue;
                 }
                 
-                if (t.GetComponent(weapon.WeaponType) != null)
+                if (t.GetUpgrade(weapon) != null)
                 {
                     // already has upgrade
                     foreach (var subUpgrade in weapon.upgrades)

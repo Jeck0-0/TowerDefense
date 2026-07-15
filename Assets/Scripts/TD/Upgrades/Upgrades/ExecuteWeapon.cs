@@ -6,7 +6,7 @@ namespace TowerDefense
 {
     public class ExecuteWeapon : Weapon
     {
-        public Stat ExecuteAtPercentHp;
+        public Stat ExecuteAtPercentHp = new();
 
         public override Stats GetStats()
         {

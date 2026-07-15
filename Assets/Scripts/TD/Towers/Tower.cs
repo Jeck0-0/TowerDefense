@@ -25,6 +25,8 @@ namespace TowerDefense
         public Stat Cost;
         public Stat MaxRange;
         public Stat MinRange;
+        public Stat UpgradeCost;
+        public float upgradeCostMultiplier = 1.5f;
     
         public Stats stats;
     
@@ -70,6 +72,7 @@ namespace TowerDefense
             tempStats.AddStat("cost", Cost);
             tempStats.AddStat("maxRange", MaxRange);
             tempStats.AddStat("minRange", MinRange);
+            tempStats.AddStat("upgradeCost", UpgradeCost);
             return tempStats;
         }
             
@@ -120,14 +123,13 @@ namespace TowerDefense
         protected override void OnCursorSelectStart()
         {
             //DisplayInfoUI.Instance.Show(this, shopIcon, towerName, towerDescription, true, stats, upgradeHandler);
-    
-    
-            /*if (!InputManager.Instance.acceptInput || placedThisFrame)
-                return;
-    
-            InputManager.Instance.SetMovingStatus(true);
-            this.Tile.tower = null; //hacky way of doing it. Works for now
-            TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);*/
+
+            if (GameStats.Instance.coins > UpgradeCost)
+            {
+                GameStats.Instance.ModifyCoins(-(int)UpgradeCost);
+                UpgradeManager.Instance?.ShowTowerUpgrades(this);
+                UpgradeCost.SetModifier("upgradeMultiplier", 0, upgradeCostMultiplier, false);
+            }
         }
 
         
