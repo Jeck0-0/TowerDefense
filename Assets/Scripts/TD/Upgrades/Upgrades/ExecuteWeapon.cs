@@ -20,13 +20,13 @@ namespace TowerDefense
         public override void Awake()
         {
             base.Awake();
-            attackingTower.OnDamageEvent += OnDamage;
+            AttackingTower.OnDamageEvent += OnDamage;
             ExecuteAtPercentHp.SetBaseValue(.05f);
         }
 
         private void OnDamage(AttackingTower attacker, Targetable target, float originalAmount, float unblockedAmount, bool killed)
         {
-            if (target.MaxHealth / target.currentHealth < ExecuteAtPercentHp)
+            if (target.currentHealth / target.MaxHealth < ExecuteAtPercentHp)
             {
                 target.Kill();
             }

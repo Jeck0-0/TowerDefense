@@ -36,7 +36,6 @@ namespace TowerDefense
             {
                 var cardUI = Instantiate(upgradeUIPrefab, upgradeUIParent).GetComponent<UpgradeCardUI>();
                 cardUI.DisplayCard(option, () => { ChooseTowerUpgrade(towerUpgrades, option); });
-                Debug.Log(option.CardData.Name);
             }
         }
 
@@ -47,6 +46,7 @@ namespace TowerDefense
             
             var towerUpgrades = t.GetOrAddComponent<TowerUpgrades>();
             towerUpgrades.UnlockUpgrade(upgrade);
+            Analytics.Instance?.GetTowerUpgrade(upgrade, t);
         }
 
         protected void DestroyOptions()
@@ -55,8 +55,27 @@ namespace TowerDefense
                 Destroy(upgradeUIParent.GetChild(i).gameObject);
             upgradeUIParent.gameObject.SetActive(false);
         }
-        
 
+
+        public bool TowerHasOptions(TowerUpgrades t)
+        {
+            foreach (var weapon in upgrades.weapons)
+            {
+                if (t.GetUpgrade(weapon) == null)
+                {
+                    if (weapon.VerifyRequirements(t))
+                        return true;
+                }
+                else 
+                {
+                    foreach (var subUpgrade in weapon.upgrades)
+                        if (subUpgrade.VerifyRequirements(t))
+                            return true;
+                }
+            }
+            return false;
+        }
+        
         private List<ITowerUpgrade> GetOptionsForTower(TowerUpgrades t)
         {
             List<ITowerUpgrade> candidates = new();

@@ -26,7 +26,6 @@ namespace TowerDefense
         public Stat MaxRange;
         public Stat MinRange;
         public Stat UpgradeCost;
-        public float upgradeCostMultiplier = 1.5f;
     
         public Stats stats;
     
@@ -61,6 +60,7 @@ namespace TowerDefense
             base.Start();
             if (TileSelectionManager.Instance?.SelectedTile == Tile)
                 OnTileSelected();
+            Analytics.Instance?.BuildTower(this);
         }
 
         public virtual Stats GetStats()
@@ -102,6 +102,7 @@ namespace TowerDefense
         
         protected override void OnCursorEnter()
         {
+            
             if (!IsSelected && Tile)
             {
                 ShowRange(new Color(1, 0, 0, 0.3f), 
@@ -109,8 +110,12 @@ namespace TowerDefense
             }
         }
 
+
+        private bool clicking = false;
         protected override void OnCursorExit()
         {
+            clicking = false;
+            
             if (Input.GetMouseButton(0))
                 StartMoving();
 
@@ -123,16 +128,14 @@ namespace TowerDefense
         protected override void OnCursorSelectStart()
         {
             //DisplayInfoUI.Instance.Show(this, shopIcon, towerName, towerDescription, true, stats, upgradeHandler);
-
-            if (GameStats.Instance.coins > UpgradeCost)
-            {
-                GameStats.Instance.ModifyCoins(-(int)UpgradeCost);
-                UpgradeManager.Instance?.ShowTowerUpgrades(this);
-                UpgradeCost.SetModifier("upgradeMultiplier", 0, upgradeCostMultiplier, false);
-            }
+            clicking = true;
         }
 
-        
+        protected override void OnCursorSelectEnd()
+        {
+            if(clicking)
+                GetComponent<TowerUpgrades>()?.TryUnlockUpgrade();
+        }
 
         public void OnTileSelected()
         {

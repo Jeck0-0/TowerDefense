@@ -23,8 +23,9 @@ namespace TowerDefense
     [Serializable]
     public class CardData
     {
+        public string Id;
         public string Name;
-        public string Description;
+        [TextArea] public string Description;
         [PreviewField] public Sprite Icon;
     }
 

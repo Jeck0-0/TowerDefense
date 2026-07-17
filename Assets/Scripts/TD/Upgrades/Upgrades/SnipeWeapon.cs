@@ -20,7 +20,7 @@ namespace TowerDefense
         public override void Awake()
         {
             base.Awake();
-            attackingTower.OnModifyDamage += ModifyDamage;
+            AttackingTower.OnModifyDamage += ModifyDamage;
             
             MaxBoost.SetBaseValue(.3f);
             DamageBoostPerUnit.SetBaseValue(.05f);
@@ -30,15 +30,15 @@ namespace TowerDefense
         {
             float dist = Vector2.Distance(attacker.transform.position, target.transform.position);
             float boost = Mathf.Min(MaxBoost, DamageBoostPerUnit * dist);
-            currentDamage *= boost;
-            return currentDamage * boost;
+            currentDamage += currentDamage * boost;
+            return currentDamage;
         }
 
         private void OnDestroy()
         {
-            if (attackingTower)
+            if (AttackingTower)
             {
-                attackingTower.OnModifyDamage -= ModifyDamage;
+                AttackingTower.OnModifyDamage -= ModifyDamage;
             }
         }
     }

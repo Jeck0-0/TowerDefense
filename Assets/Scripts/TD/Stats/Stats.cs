@@ -50,8 +50,6 @@ namespace TowerDefense
     [Serializable, InlineProperty, BoxGroup("Stats"), LabelWidth(100)]
     public class Stat
     {
-        [SerializeField, HideInInspector]
-        private string m_name;
         [HideInInspector]
         public string Name { get; protected set; }
     
@@ -123,7 +121,12 @@ namespace TowerDefense
         [ShowInInspector]
         [OnValueChanged("@UpdateValue()")]
         public Dictionary<string, StatModifier> modifiers { get; private set; }
-    
+
+        public override string ToString()
+        {
+            return $"[{Name}: {Value}]";
+        }
+
         public event Action<StatValueChangedEventArgs> OnValueChanged;
     
         public static implicit operator float(Stat s) => s.Value;

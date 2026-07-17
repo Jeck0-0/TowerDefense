@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1916935658660805796}
   - component: {fileID: 5237592369338892758}
   - component: {fileID: -1493311375951407957}
+  - component: {fileID: 4268531594535259134}
   m_Layer: 0
   m_Name: basic
   m_TagString: Untagged
@@ -49,16 +50,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
-  costMultiplier: 1.8
+  costMultiplier: 2
   effects: {fileID: 0}
   towerID: basic
   shopIcon: {fileID: -6232723913722592379, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: AND
-  towerDescription: Single target projectile.
+  towerName: Basic
+  towerDescription: Shoots projectiles at enemies.
   towerColor: {r: 0.7294118, g: 0.37254903, b: 0.7568628, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 1
+    m_baseValue: 10
     min: 1
     max: 0
     tempMin: 71.5
@@ -83,39 +84,15 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
-  upgradeHandler:
-    nextUpgradeIndex: 0
-    levels:
-    - cost: 25
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 5
-          multiply: 1
-      flagUpgrades: []
-    - cost: 40
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 8
-          multiply: 1
-      - stat: maxRange
-        modifier:
-          add: 0.5
-          multiply: 1
-      flagUpgrades: []
-    - cost: 100
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 10
-          multiply: 1
-      - stat: attackSpeed
-        modifier:
-          add: 0.5
-          multiply: 1
-      flagUpgrades: []
-    unlockedFlagUpgrades: []
+  UpgradeCost:
+    m_name: 
+    m_baseValue: 50
+    min: 0
+    max: 0
+    tempMin: 0
+    tempMax: 0
+    m_minValue: -3.4028235e+38
+    m_maxValue: 3.4028235e+38
   placeSoundVolume: 0.5
   cannon: {fileID: 8523013753695896763}
   attackAngleThreshold: 5
@@ -265,6 +242,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4268531594535259134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143269408887725404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5681a35699044d9ca17082197af9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCostMultiplier: 1.2
 --- !u!1 &3167749927198372477
 GameObject:
   m_ObjectHideFlags: 0

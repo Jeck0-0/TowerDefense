@@ -93,10 +93,10 @@ MonoBehaviour:
       Data: 8|TowerDefense.CardData, Assembly-CSharp
     - Name: Name
       Entry: 1
-      Data: Minigun Max Speed
+      Data: Minigun
     - Name: Description
       Entry: 1
-      Data: Increases the maximum attack speed boost.
+      Data: Increases the maximum attack speed boost (+15% max)
     - Name: Icon
       Entry: 10
       Data: 0
@@ -154,13 +154,13 @@ MonoBehaviour:
       Data: 13|TowerDefense.CardData, Assembly-CSharp
     - Name: Name
       Entry: 1
-      Data: Minigun Boost Step
+      Data: Minigun
     - Name: Description
       Entry: 1
-      Data: Increases the attack speed boost given for every attack
+      Data: Increases the attack speed boost given for every attack (+2.5% per attack)
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -215,7 +215,8 @@ MonoBehaviour:
       Data: 
   cardData:
     Name: Minigun
-    Description: Increase attack when shooting the same target.
+    Description: Increase attack speed when attacking. Resets when the tower stops
+      shooting (max +100%)
     Icon: {fileID: 2125737359283935466, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
   effects: []
   references:

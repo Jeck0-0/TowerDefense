@@ -89,6 +89,7 @@ namespace TowerDefense
             Time.timeScale = 0;
             gameOverUI.SetActive(true);
             ManagedBehaviour.PauseAll.Add(this);
+            Analytics.Instance?.GameOver();
         }
     
         public void WinGame()

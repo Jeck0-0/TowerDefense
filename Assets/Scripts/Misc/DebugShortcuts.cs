@@ -10,6 +10,8 @@ namespace TowerDefense
     
         private void Update()
         {
+            
+            
             //toggle fullscreen and save
             if (Input.GetKeyDown(KeyCode.F11))
             {
@@ -29,7 +31,7 @@ namespace TowerDefense
             if (Input.GetKeyDown(KeyCode.F3))
                 SceneManager.LoadScene("ProceduralLevel");
     
-            if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift))
+            if(Input.GetKey(KeyCode.LeftControl))
             {
                 if (Input.GetKeyDown(KeyCode.Y))
                 {
@@ -110,7 +112,15 @@ namespace TowerDefense
                     SceneManager.LoadScene(0);
                     Debug.Log("Loaded main scene");
                 }
-    
+            
+                //Reload scene
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    Debug.Log("Reloaded scene");
+                }
+
+                //Disable background
                 if (Input.GetKeyDown(KeyCode.G))
                 {
                     var g = FindAnyObjectByType<LevelBGIconSpawner>(FindObjectsInactive.Include);

@@ -26,28 +26,28 @@ namespace TowerDefense
         public override void Awake()
         {
             base.Awake();
-            attackingTower.OnAttack += OnAttack;
-            attackingTower.OnTargetLostEvent += OnTargetLost;
+            AttackingTower.OnAttack += OnAttack;
+            AttackingTower.OnTargetLostEvent += OnTargetLost;
             
-            MaxBoost.SetBaseValue(1);
+            MaxBoost.SetBaseValue(1f);
             BoostIncreaseStep.SetBaseValue(.1f);
         }
 
         private void OnDestroy()
         {
-            if (attackingTower)
+            if (AttackingTower)
             {
-                attackingTower.OnAttack -= OnAttack;
-                attackingTower.OnTargetLostEvent -= OnTargetLost;
+                AttackingTower.OnAttack -= OnAttack;
+                AttackingTower.OnTargetLostEvent -= OnTargetLost;
             }
         }
 
         private void LateUpdate()
         {
-            if (lostTarget && attackingTower.target == null)
+            if (lostTarget && AttackingTower.target == null)
             {
                 currentBoost = 0;
-                attackingTower.GetStats().RemoveModifier("attackSpeed", "weapon_minigun");
+                AttackingTower.GetStats().RemoveModifier("attackSpeed", "weapon_minigun");
             }
             lostTarget = false;
         }
@@ -60,7 +60,7 @@ namespace TowerDefense
         private void OnAttack(AttackingTower attacker, Targetable primaryTarget, IEnumerable<Targetable> allTargets)
         {
             currentBoost = Mathf.Min(currentBoost + BoostIncreaseStep, MaxBoost);
-            attackingTower.GetStats().SetModifier("attackSpeed", "weapon_minigun", multiply: currentBoost + 1,
+            AttackingTower.GetStats().SetModifier("attackSpeed", "weapon_minigun", multiply: currentBoost + 1,
                 overrideIfDuplicate: true);
         }
         

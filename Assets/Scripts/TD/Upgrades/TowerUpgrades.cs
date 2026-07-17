@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefense
@@ -9,24 +6,66 @@ namespace TowerDefense
     [RequireComponent(typeof(Tower))]
     public class TowerUpgrades : MonoBehaviour
     {
+        public float upgradeCostMultiplier = 1.5f;
+        
         public Tower Tower => tower ?? GetComponent<Tower>();
-
         private Tower tower;
-        private Dictionary<WeaponData, UnlockedWeaponData> unlockedWeapons = new();
+
+        private GameObject upgradeIcon;
+        
+        private Dictionary<WeaponData, Weapon> unlockedWeapons = new();
         
         private void Awake()
         {
             tower = GetComponent<Tower>();
+
+            var iconPrefab = Resources.Load<GameObject>("Prefabs/UI/UpgradableIcon");
+            upgradeIcon = Instantiate(iconPrefab, transform.position, transform.rotation, transform);
+            upgradeIcon.SetActive(false);
+            UpdateUpgradeIcon();
+            GameStats.Instance.coinsChanged += UpdateUpgradeIcon;
         }
 
-        
-        public UnlockedWeaponUpgradeData GetUpgrade(WeaponUpgrade upgrade)
+        private void OnDestroy()
         {
-            UnlockedWeaponUpgradeData u = null;
-            GetUpgrade(upgrade.Weapon)?.unlockedUpgrades.TryGetValue(upgrade, out u);
-            return u;
+            if(GameStats.Instance) GameStats.Instance.coinsChanged -= UpdateUpgradeIcon;
         }
-        public UnlockedWeaponData GetUpgrade(WeaponData upgrade)
+
+        private bool canUpgrade;
+        private void UpdateUpgradeIcon()
+        {
+            if (canUpgrade != CanUpgrade())
+            {
+                canUpgrade = GameStats.Instance.coins >= Tower.UpgradeCost;
+                upgradeIcon.SetActive(canUpgrade);
+            }
+        }
+
+        private bool CanUpgrade()
+        {
+            if (GameStats.Instance.coins < Tower.UpgradeCost) 
+                return false;
+            if (!UpgradeManager.Instance?.TowerHasOptions(this) ?? false)
+                return false;
+            return true;
+        }
+
+        public void TryUnlockUpgrade()
+        {
+            if (CanUpgrade())
+            {
+                GameStats.Instance.ModifyCoins(-(int)Tower.UpgradeCost);
+                UpgradeManager.Instance?.ShowTowerUpgrades(Tower);
+                Tower.UpgradeCost.SetModifier("upgradeMultiplier", 0, upgradeCostMultiplier, false);
+            }
+        }
+        
+        
+        public UnlockedWeaponUpgrade GetUpgrade(WeaponUpgrade upgrade)
+        {
+            return GetUpgrade(upgrade.Weapon)?.GetUpgrade(upgrade);
+        }
+        public Weapon GetUpgrade(WeaponData upgrade)
         {
             unlockedWeapons.TryGetValue(upgrade, out var u);
             return u;
@@ -37,7 +76,7 @@ namespace TowerDefense
             if (towerUpgrade is WeaponData weapon)
             {
                 var component = gameObject.AddComponent(weapon.WeaponType);
-                unlockedWeapons.Add(weapon, new UnlockedWeaponData(component as Weapon));
+                unlockedWeapons.Add(weapon, component as Weapon);
             }
             else if (towerUpgrade is WeaponUpgrade upgrade)
             {
@@ -47,11 +86,7 @@ namespace TowerDefense
                     return;
                 }
 
-                var data = GetUpgrade(upgrade);
-                if (data == null)
-                    GetUpgrade(upgrade.Weapon).unlockedUpgrades.Add(upgrade, new UnlockedWeaponUpgradeData());
-                else
-                    data.LevelUp();
+                
             }
             
             //Apply
@@ -59,24 +94,5 @@ namespace TowerDefense
         }
         
         
-
-
-        public class UnlockedWeaponData
-        {
-            public Weapon weapon;
-            public Dictionary<WeaponUpgrade, UnlockedWeaponUpgradeData> unlockedUpgrades = new();
-            public int Level => unlockedUpgrades.Sum(x => x.Value.Level);
-
-            public UnlockedWeaponData(Weapon weapon)
-            {
-                this.weapon = weapon;
-            }
-        }
-
-        public class UnlockedWeaponUpgradeData
-        {
-            public int Level { get; private set; } = 1;
-            public void LevelUp() => Level++;
-        }
     }
 }

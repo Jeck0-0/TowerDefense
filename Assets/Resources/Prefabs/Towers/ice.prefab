@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 5123767325873399359}
   - component: {fileID: -1293504078115593503}
   - component: {fileID: 3635735975561972143}
+  - component: {fileID: -510411313798073028}
   m_Layer: 0
   m_Name: ice
   m_TagString: Untagged
@@ -111,16 +112,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
-  costMultiplier: 3
+  costMultiplier: 2
   effects: {fileID: 0}
   towerID: ice
   shopIcon: {fileID: -2825653136060754799, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: XNOR
-  towerDescription: Slows enemies in an area. Does not stack.
+  towerName: Freeze
+  towerDescription: Slows enemies in an area. Slow effect does not stack.
   towerColor: {r: 0.3803922, g: 0.7294118, b: 0.7607844, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 64
+    m_baseValue: 20
     min: 1
     max: 0
     tempMin: 0
@@ -145,40 +146,15 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
-  upgradeHandler:
-    nextUpgradeIndex: 0
-    levels:
-    - cost: 50
-      statUpgrades:
-      - stat: maxRange
-        modifier:
-          add: 0.3
-          multiply: 1
-      - stat: slowAmount
-        modifier:
-          add: -0.1
-          multiply: 1
-      - stat: damage
-        modifier:
-          add: 2
-          multiply: 1
-      flagUpgrades: []
-    - cost: 120
-      statUpgrades:
-      - stat: maxRange
-        modifier:
-          add: 0.5
-          multiply: 1
-      - stat: damage
-        modifier:
-          add: 3
-          multiply: 1
-      - stat: slowAmount
-        modifier:
-          add: -0.1
-          multiply: 1
-      flagUpgrades: []
-    unlockedFlagUpgrades: []
+  UpgradeCost:
+    m_name: 
+    m_baseValue: 0
+    min: 0
+    max: 0
+    tempMin: 0
+    tempMax: 0
+    m_minValue: -3.4028235e+38
+    m_maxValue: 3.4028235e+38
   placeSoundVolume: 0.5
   cannon: {fileID: 1999829596359873009}
   attackAngleThreshold: 360
@@ -303,6 +279,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-510411313798073028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367323786301763600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5681a35699044d9ca17082197af9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCostMultiplier: 1.2
 --- !u!1 &4069511386675674234
 GameObject:
   m_ObjectHideFlags: 0

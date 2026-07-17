@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6193861130497882043}
   - component: {fileID: -3436987236222513301}
   - component: {fileID: -5746598715956335208}
+  - component: {fileID: 9022088817807573592}
   m_Layer: 0
   m_Name: stun
   m_TagString: Untagged
@@ -99,12 +100,12 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: stun
   shopIcon: {fileID: -6240021825540437177, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: XOR
-  towerDescription: Has a chance to stun enemies.
+  towerName: Impact
+  towerDescription: Blasts enemies in an area around it. Has a chance to stun enemies.
   towerColor: {r: 0.7372549, g: 0.7058824, b: 0.7568628, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 32
+    m_baseValue: 20
     min: 1
     max: 0
     tempMin: 0
@@ -129,47 +130,15 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
-  upgradeHandler:
-    nextUpgradeIndex: 0
-    levels:
-    - cost: 40
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 2
-          multiply: 1
-      - stat: stunChance
-        modifier:
-          add: 0.05
-          multiply: 1
-      flagUpgrades: []
-    - cost: 80
-      statUpgrades:
-      - stat: maxRange
-        modifier:
-          add: 0.2
-          multiply: 1
-      - stat: damage
-        modifier:
-          add: 2
-          multiply: 1
-      flagUpgrades: []
-    - cost: 120
-      statUpgrades:
-      - stat: stunChance
-        modifier:
-          add: 0.05
-          multiply: 1
-      - stat: damage
-        modifier:
-          add: 3
-          multiply: 1
-      - stat: attackSpeed
-        modifier:
-          add: 0.2
-          multiply: 1
-      flagUpgrades: []
-    unlockedFlagUpgrades: []
+  UpgradeCost:
+    m_name: 
+    m_baseValue: 0
+    min: 0
+    max: 0
+    tempMin: 0
+    tempMax: 0
+    m_minValue: -3.4028235e+38
+    m_maxValue: 3.4028235e+38
   placeSoundVolume: 0.5
   cannon: {fileID: 4493684489330958133}
   attackAngleThreshold: 360
@@ -296,6 +265,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9022088817807573592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752127049823460849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5681a35699044d9ca17082197af9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCostMultiplier: 1.2
 --- !u!1 &2291845964236734813
 GameObject:
   m_ObjectHideFlags: 0

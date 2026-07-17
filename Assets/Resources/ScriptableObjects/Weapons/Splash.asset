@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 6137813302077351160, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26,7 +27,34 @@ MonoBehaviour:
       Data: 0|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|TowerDefense.RequireTowerType, Assembly-CSharp
+    - Name: towerType
+      Entry: 7
+      Data: 2|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TowerDefense.ProjectileTower, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -35,7 +63,7 @@ MonoBehaviour:
       Data: 
     - Name: WeaponType
       Entry: 7
-      Data: 1|System.RuntimeType, mscorlib
+      Data: 4|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: TowerDefense.SplashWeapon, Assembly-CSharp
@@ -44,10 +72,80 @@ MonoBehaviour:
       Data: 
     - Name: upgrades
       Entry: 7
-      Data: 2|TowerDefense.WeaponUpgrade[], Assembly-CSharp
+      Data: 5|TowerDefense.WeaponUpgrade[], Assembly-CSharp
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|TowerDefense.WeaponUpgrade, Assembly-CSharp
+    - Name: cardData
+      Entry: 7
+      Data: 7|TowerDefense.CardData, Assembly-CSharp
+    - Name: Name
+      Entry: 1
+      Data: Splash Damage
+    - Name: Description
+      Entry: 1
+      Data: Increase splash damage area by 0.1
+    - Name: Icon
+      Entry: 10
       Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: requirements
+      Entry: 7
+      Data: 8|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 9|TowerDefense.AmountLimit, Assembly-CSharp
+    - Name: maxAmount
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effects
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|TowerDefense.ModifyTowerStatEffect, Assembly-CSharp
+    - Name: statName
+      Entry: 1
+      Data: splashDamageArea
+    - Name: add
+      Entry: 4
+      Data: 0.1
+    - Name: multiply
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -57,7 +155,7 @@ MonoBehaviour:
   cardData:
     Name: Splash Damage
     Description: Attacks deal damage in a small area (0.5 radius)
-    Icon: {fileID: 5524590292671962877, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
+    Icon: {fileID: 6137813302077351160, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
   effects:
   - rid: 8891930076092825689
   references:

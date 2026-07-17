@@ -33,6 +33,7 @@ namespace TowerDefense
         {
             lives -= amount;
             livesChanged?.Invoke();
+            Analytics.Instance?.TakeDamage(amount);
         }
         
         public void ModifyCoins(int amount)

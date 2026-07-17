@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5522203492493274359}
   - component: {fileID: -8063346384651002629}
   - component: {fileID: -3428087962284545194}
+  - component: {fileID: 7930997716372633264}
   m_Layer: 0
   m_Name: cannon
   m_TagString: Untagged
@@ -95,55 +96,15 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
-  upgradeHandler:
-    nextUpgradeIndex: 0
-    levels:
-    - cost: 40
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 3
-          multiply: 1
-      - stat: attackSpeed
-        modifier:
-          add: 0.3
-          multiply: 1
-      flagUpgrades: []
-    - cost: 80
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 4
-          multiply: 1
-      - stat: maxRange
-        modifier:
-          add: 0.5
-          multiply: 1
-      - stat: splashDamageArea
-        modifier:
-          add: 0.2
-          multiply: 1
-      flagUpgrades: []
-    - cost: 125
-      statUpgrades:
-      - stat: damage
-        modifier:
-          add: 3
-          multiply: 1
-      - stat: attackSpeed
-        modifier:
-          add: 0.2
-          multiply: 1
-      - stat: projectileSpeed
-        modifier:
-          add: 0.8
-          multiply: 1
-      - stat: splashDamageArea
-        modifier:
-          add: 0.2
-          multiply: 1
-      flagUpgrades: []
-    unlockedFlagUpgrades: []
+  UpgradeCost:
+    m_name: 
+    m_baseValue: 0
+    min: 0
+    max: 0
+    tempMin: 0
+    tempMax: 0
+    m_minValue: -3.4028235e+38
+    m_maxValue: 3.4028235e+38
   placeSoundVolume: 0.5
   cannon: {fileID: 6944747023187206097}
   attackAngleThreshold: 5
@@ -281,6 +242,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7930997716372633264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312358700089777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5681a35699044d9ca17082197af9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCostMultiplier: 1.2
 --- !u!1 &3213607579433340139
 GameObject:
   m_ObjectHideFlags: 0

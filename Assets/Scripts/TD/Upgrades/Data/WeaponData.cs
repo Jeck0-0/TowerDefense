@@ -72,8 +72,7 @@ namespace TowerDefense
         public bool VerifyRequirements(TowerUpgrades t) => TowerUpgradeRequirements.All(x => x.Verify(t, this));
         public void ApplyUpgrade(TowerUpgrades t)
         {
-            var w = (Weapon)t.GetComponent(Weapon.WeaponType);
-            w.LevelUp();
+            var w = t.GetUpgrade(Weapon);
             foreach (var effect in effects)
                 effect.Apply(w, t);
         }
@@ -82,19 +81,19 @@ namespace TowerDefense
 
     public abstract class Weapon : MonoBehaviour
     {
-        public int Level { get; private set; }
-        public void LevelUp() => Level++;
-        protected Tower tower;
-        protected AttackingTower attackingTower => tower as AttackingTower;
+        private Dictionary<WeaponUpgrade, UnlockedWeaponUpgrade> unlockedUpgrades = new();
+        public WeaponData WeaponData { get; private set; }
+        public int Level => unlockedUpgrades.Sum(x => x.Value.Level);
         
         protected Stats stats;
+        protected TowerUpgrades upgrades { get; private set; }
+        protected Tower Tower => upgrades.Tower;
+        protected AttackingTower AttackingTower => Tower as AttackingTower;
         public virtual Stats GetStats()
         {
             return stats ?? new Stats();
         }
         
-        public WeaponData WeaponData { get; private set; }
-
         public void Initialize(WeaponData data)
         {
             WeaponData = data;
@@ -102,12 +101,38 @@ namespace TowerDefense
         
         public virtual void Awake()
         {
-            tower = GetComponent<Tower>();
+            upgrades = GetComponent<TowerUpgrades>();
         }
 
+        public UnlockedWeaponUpgrade GetUpgrade(WeaponUpgrade upgrade)
+        {
+            unlockedUpgrades.TryGetValue(upgrade, out var u);
+            return u;
+        }
+
+        public void UnlockUpgrade(WeaponUpgrade upgrade)
+        {
+            var upgradeData = GetUpgrade(upgrade);
+            if (upgradeData == null)
+                unlockedUpgrades.Add(upgrade, new UnlockedWeaponUpgrade(upgrade));
+            else
+                upgradeData.LevelUp();
+        }
 
         //awake is called before upgrade effects are applied
         //start is called after upgrade effects are applied
 
+    }
+
+    public class UnlockedWeaponUpgrade
+    {
+        public WeaponUpgrade Upgrade { get; private set; }
+        public int Level { get; private set; } = 1;
+        public void LevelUp() => Level++;
+
+        public UnlockedWeaponUpgrade(WeaponUpgrade upgrade)
+        {
+            this.Upgrade = upgrade;
+        }
     }
 }

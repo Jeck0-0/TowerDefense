@@ -27,7 +27,43 @@ MonoBehaviour:
       Data: 0|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|TowerDefense.RequireTowerType, Assembly-CSharp
+    - Name: towerType
+      Entry: 7
+      Data: 2|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 3|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TowerDefense.ProjectileTower, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TowerDefense.FireTower, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -36,7 +72,7 @@ MonoBehaviour:
       Data: 
     - Name: WeaponType
       Entry: 7
-      Data: 1|System.RuntimeType, mscorlib
+      Data: 5|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: TowerDefense.SnipeWeapon, Assembly-CSharp
@@ -45,22 +81,22 @@ MonoBehaviour:
       Data: 
     - Name: upgrades
       Entry: 7
-      Data: 2|TowerDefense.WeaponUpgrade[], Assembly-CSharp
+      Data: 6|TowerDefense.WeaponUpgrade[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 3|TowerDefense.WeaponUpgrade, Assembly-CSharp
+      Data: 7|TowerDefense.WeaponUpgrade, Assembly-CSharp
     - Name: cardData
       Entry: 7
-      Data: 4|TowerDefense.CardData, Assembly-CSharp
+      Data: 8|TowerDefense.CardData, Assembly-CSharp
     - Name: Name
       Entry: 1
       Data: Snipe
     - Name: Description
       Entry: 1
-      Data: Increase snipe max boost by 15%
+      Data: Increase max snipe damage boost by 15%
     - Name: Icon
       Entry: 10
       Data: 0
@@ -69,7 +105,7 @@ MonoBehaviour:
       Data: 
     - Name: requirements
       Entry: 7
-      Data: 5|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+      Data: 9|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -81,14 +117,14 @@ MonoBehaviour:
       Data: 
     - Name: effects
       Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+      Data: 10|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 7|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
+      Data: 11|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
     - Name: statName
       Entry: 1
       Data: maxBoost
@@ -112,10 +148,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 8|TowerDefense.WeaponUpgrade, Assembly-CSharp
+      Data: 12|TowerDefense.WeaponUpgrade, Assembly-CSharp
     - Name: cardData
       Entry: 7
-      Data: 9|TowerDefense.CardData, Assembly-CSharp
+      Data: 13|TowerDefense.CardData, Assembly-CSharp
     - Name: Name
       Entry: 1
       Data: Snipe
@@ -130,7 +166,7 @@ MonoBehaviour:
       Data: 
     - Name: requirements
       Entry: 7
-      Data: 10|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
+      Data: 14|TowerDefense.TowerUpgradeRequirement[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -142,14 +178,14 @@ MonoBehaviour:
       Data: 
     - Name: effects
       Entry: 7
-      Data: 11|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
+      Data: 15|System.Collections.Generic.List`1[[TowerDefense.WeaponEffect, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 12|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
+      Data: 16|TowerDefense.ModifyWeaponStatEffect, Assembly-CSharp
     - Name: statName
       Entry: 1
       Data: damageBoostPerUnit

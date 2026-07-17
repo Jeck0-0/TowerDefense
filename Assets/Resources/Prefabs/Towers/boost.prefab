@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3885226249306306330}
   - component: {fileID: -3641711824607459403}
   - component: {fileID: -6962892962487336712}
+  - component: {fileID: -8983142315122355663}
   m_Layer: 0
   m_Name: boost
   m_TagString: Untagged
@@ -65,12 +66,12 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: boost
   shopIcon: {fileID: 6618166012049062949, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: NOT
-  towerDescription: Boosts adjacent towers. Does not stack.
+  towerName: Boost
+  towerDescription: Boosts attack speed and range of adjacent towers. Does not stack.
   towerColor: {r: 0.40784314, g: 0.76862746, b: 0.38431373, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 16
+    m_baseValue: 20
     min: 1
     max: 0
     tempMin: 0
@@ -95,10 +96,15 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 0
-  upgradeHandler:
-    nextUpgradeIndex: 0
-    levels: []
-    unlockedFlagUpgrades: []
+  UpgradeCost:
+    m_name: 
+    m_baseValue: 0
+    min: 0
+    max: 0
+    tempMin: 0
+    tempMax: 0
+    m_minValue: -3.4028235e+38
+    m_maxValue: 3.4028235e+38
   placeSoundVolume: 0.4
   modifierName: boostTower
   buffs:
@@ -184,6 +190,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8983142315122355663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470663301399518721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5681a35699044d9ca17082197af9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCostMultiplier: 1.2
 --- !u!1 &5039091630313269200
 GameObject:
   m_ObjectHideFlags: 0
